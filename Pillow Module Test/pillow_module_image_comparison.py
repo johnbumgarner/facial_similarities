@@ -1,6 +1,6 @@
 #########################################
 # The Python module Pillow is the
-# folk of PIL, the Python Imaging Library
+# folk of PIL (Python Imaging Library)
 #########################################
 # this module is used to load images
 from PIL import Image
@@ -48,9 +48,3 @@ for image in idris_elba_headshots:
         print(f'These images have identical pixels: {base_image_name}, {image}')
     elif results == False:
         print (f'These images have dissimilar pixels: {base_image_name}, {image}')
-
-
-
-
-
-
