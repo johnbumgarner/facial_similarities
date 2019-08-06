@@ -2,9 +2,9 @@
 # The Python module Pillow is the
 # folk of PIL (Python Imaging Library)
 #########################################
-# this module is used to load images
+# This module is used to load images
 from PIL import Image
-# This module contains a number of arithmetical image operations,
+# This module contains a number of arithmetical image operations
 from PIL import ImageChops
 
 # This list contains multiple images of Idris Elba, who
@@ -45,6 +45,6 @@ for image in idris_elba_headshots:
     compare_image = Image.open(f'{image_directory}/{image}')
     results = image_pixel_differences(base_image, compare_image)
     if results == True:
-        print(f'These images have identical pixels: {base_image_name}, {image}')
+        print(f'These images have identical pixels: {base_image_name} <--> {image}')
     elif results == False:
-        print (f'These images have dissimilar pixels: {base_image_name}, {image}')
+        print (f'These images have dissimilar pixels: {base_image_name} <--> {image}')
