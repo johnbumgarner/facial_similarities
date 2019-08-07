@@ -1,7 +1,6 @@
-#########################################
-# The Python module Pillow is the
-# folk of PIL (Python Imaging Library)
-#########################################
+########################################################################
+# The Python module Pillow is the folk of PIL (Python Imaging Library)
+########################################################################
 # This module is used to load images
 from PIL import Image
 # This module contains a number of arithmetical image operations
