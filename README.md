@@ -9,7 +9,9 @@ The set of images used in these image simarility experiments were of well-known 
 ![Females_with_earrings](https://github.com/johnbumgarner/image_simarility_experiments/blob/master/females_with_earrings_test_images.jpg)
 
 
-**Experiment One**
+## Image Simarility Experiments
+
+**Experiment 1**
 
 This experiment used the Python module Pillow, which a the folk of PIL, the Python Imaging Library. The function used was PIL.ImageChops.difference(image1, image2), which returns the absolute value of the pixel-by-pixel difference between the two images.
 
