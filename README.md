@@ -5,6 +5,9 @@ This repository contains Python code used for various image simarility experimen
 The primary objective of these experiments: Provided a photo of a target person, and a set of other photos, is the target person one of the people in the set of photographs. 
 
 
+![Image description](link-to-image)
+
+
 
 
 
