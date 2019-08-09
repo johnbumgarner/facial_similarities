@@ -11,11 +11,11 @@ The set of images used in these image simarility experiments were of well-known 
 
 ## Image Simarility Experiments
 
-#### Experiment 1
+### Experiment 1
 
 This experiment used the Python module Pillow, which is a folk of PIL, the Python Imaging Library. The function used was PIL.ImageChops.difference(image1, image2), which returns the absolute value of the pixel-by-pixel difference between two images. This function was able to correctly identify the two images of Jennifer Aniston that were exactly the same.  The function produced no false positives.
 
-#### Experiment 2
+### Experiment 2
 
 This experiment used the Python module ImageHash, which was developed by Johannes Bucher.  This module has four hashing methods:
 
