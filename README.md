@@ -1,3 +1,11 @@
 # Image comparison experiments
 
-This repository contains code related to various image comparison experiments using multiple Python modules. The primary purpose of these tests is to determine the capabilities and limitations of individual modules.
+This repository contains Python code used for various image simarility experiments. The primary purpose of these tests was to determine the capabilities and limitations of individual Python modules and various techniques used for image simarility. 
+
+The primary objective of these experiments: Provided a photo of a target person, and a set of other photos, is the target person one of the people in the set of photographs. 
+
+
+
+
+
+
