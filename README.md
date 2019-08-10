@@ -1,6 +1,6 @@
 # Overview
 
-This repository contains Python code* used for various image similarity experiments. The primary purpose of these tests was to determine the capabilities and limitations of individual Python modules and various techniques used for image simarility. 
+This repository contains Python code used for various image similarity experiments. The primary purpose of these tests was to determine the capabilities and limitations of individual Python modules and various techniques used for image simarility. 
 
 The primary objective of these experiments: Provided a photo of a target person, and a set of other photos, is the target person one of the people in the set of photographs. 
 
@@ -11,11 +11,11 @@ The set of images used in these image simarility experiments were of well-known 
 
 ## Image Simarility Experiments
 
-### Experiment 1
+### Experiment 1:
 
 This experiment used the Python module Pillow, which is a folk of PIL, the Python Imaging Library. The function used was PIL.ImageChops.difference(image1, image2), which returns the absolute value of the pixel-by-pixel difference between two images. This function was able to correctly identify the two images of Jennifer Aniston that were exactly the same.  The function produced no false positives.
 
-### Experiment 2
+### Experiment 2:
 
 This experiment used the Python module ImageHash, which was developed by Johannes Bucher.  This module has four hashing methods:
 
@@ -37,7 +37,7 @@ The threshold for _pHash_ similar images was set at less than 35, which did not 
 
 The threshold for _wavelet_ similar images was set at less than 15, which did not match any additional images of Jennifer Aniston in the control set. Setting this threshold to less than 20 produced 2 false positives. Setting this threshold to less than 30 produced 3 false positives and identified another Jennifer Aniston (jennifer_anoston_earrings_03.jpeg) image. The _wavelet_ dissimilar image threshold was set at greater than 15.  Both of the other Jennifer Aniston images were in this dissimilar set. 
 
-### Experiment 3
+### Experiment 3:
 
 This experiment used the Python modules Numpy and Math. Numpy is one of fundamental packages for scientific computing with Python and Math provides access to various access mathematical functions. This experiment focused on Structural Similarity Index (SSIM), which is the a method for measuring the similarity between two images and Hamming distance, which determines how similar two images are.
 
@@ -45,9 +45,9 @@ In testing both methods were ables to successfully identify the target image of 
    
 
 
-### NOTES
+### Notes:
 
-* _The code within this repository is **not** production ready. It was strictly designed for experimental testing purposes._
+_The code within this repository is **not** production ready. It was strictly designed for experimental testing purposes._
 
 
 
