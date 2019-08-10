@@ -7,6 +7,7 @@ The primary objective of these experiments: Provided a photo of a target person,
 The set of images used in these image simarility experiments were of well-known female actresses wearing earrings.  
 
 <p align="center">
+<img src="https://github.com/johnbumgarner/image_simarility_experiments/blob/master/females_with_earrings_test_images.jpg">
 ![Females_with_earrings](https://github.com/johnbumgarner/image_simarility_experiments/blob/master/females_with_earrings_test_images.jpg)
 </p>
 
