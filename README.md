@@ -57,12 +57,11 @@ The Haar Cascade classifiers used in this experiment were:
 3. haarcascade_mcs_nose.xml
 4. haarcascade_smile.xml
 
+During testing it was noted that all these Haar Cascade classifiers were temperamental and required continually tuning of the parameters scaleFactor and minNeighbors used by detectMultiScale.  The angle of the faces within the images were also a key factor when detecting facial features. Images containing direct frontal faces produced the best results.  
+
 <p align="center">
 <img src="https://github.com/johnbumgarner/image_simarility_experiments/blob/master/haar_cascade_features.jpg">
 </p>
-
-   
-
 
 ### Notes:
 
