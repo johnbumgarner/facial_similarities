@@ -321,11 +321,3 @@ if valid_file_extension == True:
 
 elif valid_file_extension == False:
     print(f'The following image does not have a valid file_extension {image_name}')
-
-
-
-
-
-
-
-
