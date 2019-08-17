@@ -48,6 +48,10 @@ In testing both methods were ables to successfully identify the target image of 
 
 
 
+<p align="center">
+<img src="https://github.com/johnbumgarner/image_simarility_experiments/blob/master/haar_cascade_features.jpg">
+</p>
+
    
 
 
