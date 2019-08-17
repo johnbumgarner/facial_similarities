@@ -46,7 +46,16 @@ In testing both methods were ables to successfully identify the target image of 
 
 ### Experiment 4:
 
+This experiment used the Python module cv2. The Python package is opencv-python.  This opencv-python package is the Open Source Computer Vision (OpenCV), which is a computer vision and machine learning software library. Computer vision and digital image processing are currently being widely applied in face recognition, criminal investigation, signature pattern detection in banking, digital documents analysis and smart tag based vehicles for recognition. 
 
+The LBPH face recognition algorithm was used in this experiment. Local Binary Pattern (LBP) is a simple and efficient texture operator which labels the pixels of an image by thresholding the neighborhood of each pixel and considers the result as a binary number. The experiment also uses the Haar Cascade, which is a machine learning object detection algorithm used to identify objects in an image or video and based on the concept of features.
+
+The Haar Cascade classifiers used in this experiment were:
+
+1. haarcascade_frontalface_default.xml 
+2. haarcascade_eye.xml
+3. haarcascade_mcs_nose.xml
+4. haarcascade_smile.xml
 
 <p align="center">
 <img src="https://github.com/johnbumgarner/image_simarility_experiments/blob/master/haar_cascade_features.jpg">
