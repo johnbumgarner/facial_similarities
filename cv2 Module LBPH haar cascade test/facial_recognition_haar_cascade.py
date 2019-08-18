@@ -64,12 +64,12 @@ def detect_single_face(image, faces):
     '''
     # (x,y) are the top-left coordinate of the rectangle
     # (w,h) are the width and height of the rectangle
-    for (x, y, w, h) in faces:
+    for (x_coordinate, y_coordinate, width, height) in faces:
         # Draw bounding rectangle based on parameter dimensions
         # BGR color values (3 parameters)
         # BGR color (255, 0, 255) - https://rgb.to/255,0,255
         # Line width in pixels
-        cv2.rectangle(image, (x, y), (x + w, y + h), (255, 0, 255), 2)
+        cv2.rectangle(image, (x_coordinate,  y_coordinate), (x_coordinate + width,  y_coordinate + height), (255, 0, 255), 2)
 
     display_facial_detection_results(image)
 
@@ -86,17 +86,17 @@ def detect_multiple_faces(image, faces):
     '''
     # (x,y) are the top-left coordinate of the rectangle
     # (w,h) are the width and height of the rectangle
-    for (x, y, w, h) in faces:
+    for (x_coordinate,  y_coordinate, width, height) in faces:
         # Draw bounding rectangle based on parameter dimensions
         # BGR (Blue, Green, Red) color values (3 parameters)
         # BGR color (255, 0, 255) - https://rgb.to/255,0,255
         # Line width in pixels
-        cv2.rectangle(image, (x, y), (x + w, y + h), (255, 0, 255), 2)
+        cv2.rectangle(image, (x_coordinate,  y_coordinate), (x_coordinate + width,  y_coordinate + height), (255, 0, 255), 2)
 
     display_facial_detection_results(image)
 
 
-def detect_eyes_single_face(image, faces, gray):
+def detect_eyes_single_face(image, faces, grayscale_image):
     '''
     This function is designed to draw a bounding rectangle around the eye area in the facial area
     of a single person contained in an image.
@@ -109,28 +109,28 @@ def detect_eyes_single_face(image, faces, gray):
     '''
     # (x,y) are the top-left coordinate of the rectangle
     # (w,h) are the width and height of the rectangle
-    for (x, y, w, h) in faces:
+    for (x_coordinate, y_coordinate, width, height) in faces:
 
         # roi_gray is a numpy.ndarray based on the gray scale of the image
-        roi_gray = gray[y:y+h, x:x+w]
+        roi_gray = grayscale_image[y_coordinate:y_coordinate+height, x_coordinate:x_coordinate+width]
 
         # roi_color is a numpy.ndarray based on the color scale of the image
-        roi_color = image[y:y+h, x:x+w]
+        roi_color = image[y_coordinate:y_coordinate+height, x_coordinate:x_coordinate+width]
 
         # eyes contains the calculate facial coordinates produced by eyes_cascade.detectMultiScale in relation to face_cascade
         eyes = eye_cascade.detectMultiScale(roi_gray, scaleFactor=1.3, minNeighbors=4, flags=cv2.CASCADE_SCALE_IMAGE)
 
-        for (ex, ey, ew, eh) in eyes:
+        for (eye_x_coordinate, eye_y_coordinate, eye_width, eye_height) in eyes:
             # Draw bounding rectangle based on parameter dimensions around eyes
             # BGR (Blue, Green, Red) color values (3 parameters)
             # RGB color (255, 0, 128) - https://rgb.to/128,0,255
             # Line width in pixels
-            cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (128, 0, 255), 2)
+            cv2.rectangle(roi_color, (eye_x_coordinate,  eye_y_coordinate), (eye_x_coordinate + eye_width,  eye_y_coordinate + eye_height), (128, 0, 255), 2)
 
     display_facial_detection_results(image)
 
 
-def detect_nose_single_face(image, faces, gray):
+def detect_nose_single_face(image, faces, grayscale_image):
     '''
     This function is designed to draw a bounding rectangle around the nose area in the facial area
     of a single person contained in an image.
@@ -143,28 +143,28 @@ def detect_nose_single_face(image, faces, gray):
     '''
     # (x,y) are the top-left coordinate of the rectangle
     # (w,h) are the width and height of the rectangle
-    for (x, y, w, h) in faces:
+    for (x_coordinate, y_coordinate, width, height) in faces:
 
         # roi_gray is a numpy.ndarray based on the gray scale of the image
-        roi_gray = gray[y:y+h, x:x+w]
+        roi_gray = grayscale_image[y_coordinate:y_coordinate+height, x_coordinate:x_coordinate+width]
 
         # roi_color is a numpy.ndarray based on the color scale of the image
-        roi_color = image[y:y+h, x:x+w]
+        roi_color = image[y_coordinate:y_coordinate+height, x_coordinate:x_coordinate+width]
 
         # nose contains the calculate facial coordinates produced by nose_cascade.detectMultiScale in relation to face_cascade
         nose = nose_cascade.detectMultiScale(roi_gray, scaleFactor=1.3, minNeighbors=8, flags=cv2.CASCADE_SCALE_IMAGE)
 
-        for (nx, ny, nw, nh) in nose:
+        for (nose_x_coordinate, nose_y_coordinate, nose_width, nose_height) in nose:
             # Draw bounding rectangle based on parameter dimensions around nose
             # BGR (Blue, Green, Red) color values (3 parameters)
             # RGB color (255, 0, 0) - https://rgb.to/255,0,0
             # Line width in pixels
-            cv2.rectangle(roi_color, (nx, ny), (nx + nw, ny + nh), (255, 0, 0), 2)
+            cv2.rectangle(roi_color, (nose_x_coordinate, nose_y_coordinate), (nose_x_coordinate + nose_width, nose_y_coordinate + nose_height), (255, 0, 0), 2)
 
     display_facial_detection_results(image)
 
 
-def detect_mouth_single_face(image, faces, gray):
+def detect_mouth_single_face(image, faces, grayscale_image):
     '''
     This function is designed to draw a bounding rectangle around the mouth area in the facial area
     of a single person contained in an image.
@@ -177,28 +177,28 @@ def detect_mouth_single_face(image, faces, gray):
        '''
     # (x,y) are the top-left coordinate of the rectangle
     # (w,h) are the width and height of the rectangle
-    for (x, y, w, h) in faces:
+    for (x_coordinate, y_coordinate, width, height) in faces:
 
         # roi_gray is a numpy.ndarray based on the gray scale of the image
-        roi_gray = gray[y:y+h, x:x+w]
+        roi_gray = grayscale_image[y_coordinate:y_coordinate+height, x_coordinate:x_coordinate+width]
 
         # roi_color is a numpy.ndarray based on the color scale of the image
-        roi_color = image[y:y+h, x:x+w]
+        roi_color = image[y_coordinate:y_coordinate+height, x_coordinate:x_coordinate+width]
 
         # mouth contains the calculate facial coordinates produced by mouth_cascade.detectMultiScale in relation to face_cascade
         mouth = mouth_cascade.detectMultiScale(roi_gray, scaleFactor=1.3, minNeighbors=4, flags=cv2.CASCADE_SCALE_IMAGE)
 
-        for (mx, my, mw, mh) in mouth:
+        for (mouth_x_coordinate, mouth_y_coordinate, mouth_width, mouth_height) in mouth:
             # Draw bounding rectangle based on parameter dimensions around mouth
             # BGR (Blue, Green, Red) color values (3 parameters)
             # RGB color (0, 255, 128) - https://rgb.to/0,255,128
             # Line width in pixels
-            cv2.rectangle(roi_color, (mx, my), (mx + mw, my + mh), (0, 255, 128), 2)
+            cv2.rectangle(roi_color, (mouth_x_coordinate, mouth_y_coordinate), (mouth_x_coordinate + mouth_width, mouth_y_coordinate + mouth_height), (0, 255, 128), 2)
 
     display_facial_detection_results(image)
 
 
-def detect_single_face_multiple_features(image, faces, gray):
+def detect_single_face_multiple_features(image, faces, grayscale_image):
     '''
     This function is designed to draw a bounding rectangles around the face, eyes, nose and
     mouth areas in the facial area of a single person contained in an image.
@@ -211,18 +211,18 @@ def detect_single_face_multiple_features(image, faces, gray):
     '''
     # (x,y) are the top-left coordinate of the rectangle
     # (w,h) are the width and height of the rectangle
-    for (x, y, w, h) in faces:
+    for (x_coordinate, y_coordinate, width, height) in faces:
         # Draw bounding rectangle based on parameter dimensions
         # BGR (Blue, Green, Red) color values (3 parameters)
         # BGR color (255, 0, 255) - https://rgb.to/255,0,255
         # Line width in pixels
-        cv2.rectangle(image, (x, y), (x+w, y+h), (255, 0, 255), 2)
+        cv2.rectangle(image, (x_coordinate, y_coordinate), (x_coordinate + width, y_coordinate + height), (255, 0, 255), 2)
 
         # roi_gray is a numpy.ndarray based on the gray scale of the image
-        roi_gray = gray[y:y+h, x:x+w]
+        roi_gray = grayscale_image[y_coordinate:y_coordinate+height, x_coordinate:x_coordinate+width]
 
         # roi_color is a numpy.ndarray based on the color scale of the image
-        roi_color = image[y:y+h, x:x+w]
+        roi_color = image[y_coordinate:y_coordinate+height, x_coordinate:x_coordinate+width]
 
         # eyes contains the calculate facial coordinates produced by eyes_cascade.detectMultiScale in relation to face_cascade
         eyes = eye_cascade.detectMultiScale(roi_gray, scaleFactor = 1.3, minNeighbors=4, flags = cv2.CASCADE_SCALE_IMAGE)
@@ -233,26 +233,26 @@ def detect_single_face_multiple_features(image, faces, gray):
         # mouth contains the calculate facial coordinates produced by mouth_cascade.detectMultiScale in relation to face_cascade
         mouth = mouth_cascade.detectMultiScale(roi_gray, scaleFactor = 1.3, minNeighbors=4, flags = cv2.CASCADE_SCALE_IMAGE)
 
-        for (ex, ey, ew, eh) in eyes:
+        for (eye_x_coordinate, eye_y_coordinate, eye_width, eye_height) in eyes:
             # Draw bounding rectangle based on parameter dimensions
             # BGR (Blue, Green, Red) color values (3 parameters)
             # BGR color (128, 0, 255) - https://rgb.to/128,0,255
             # Line width in pixels
-            cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (128, 0, 255), 2)
+            cv2.rectangle(roi_color, (eye_x_coordinate, eye_y_coordinate), (eye_x_coordinate + eye_width, eye_y_coordinate + eye_height), (128, 0, 255), 2)
 
-        for (nx, ny, nw, nh) in nose:
+        for (nose_x_coordinate, nose_y_coordinate, nose_width, nose_height) in nose:
             # Draw bounding rectangle based on parameter dimensions around nose
             # BGR (Blue, Green, Red) color values (3 parameters)
             # BGR color (255, 0, 0) - https://rgb.to/255,0,0
             # Line width in pixels
-            cv2.rectangle(roi_color, (nx, ny), (nx + nw, ny + nh), (255, 0, 0), 2)
+            cv2.rectangle(roi_color, (nose_x_coordinate, nose_y_coordinate), (nose_x_coordinate + nose_width, nose_y_coordinate + nose_height), (255, 0, 0), 2)
 
-        for (mx, my, mw, mh) in mouth:
+        for (mouth_x_coordinate, mouth_y_coordinate, mouth_width, mouth_height) in mouth:
             # Draw bounding rectangle based on parameter dimensions
             # BGR (Blue, Green, Red) color values (3 parameters)
             # BGR color (0, 255, 128) - https://rgb.to/0,255,128
             # Line width in pixels
-            cv2.rectangle(roi_color, (mx, my), (mx + mw, my + mh), (0, 255, 128), 2)
+            cv2.rectangle(roi_color, (mouth_x_coordinate, mouth_y_coordinate), (mouth_x_coordinate + mouth_width, mouth_y_coordinate + mouth_height), (0, 255, 128), 2)
 
     display_facial_detection_results(image)
 
@@ -263,12 +263,12 @@ def display_facial_detection_results(image):
     # automatically fits to the image size.
     cv2.imshow('Facial feature recognition', image)
     # Displays the window infinitely
-    key = cv2.waitKey(0)
+    key = cv2.waitKey(0) & 0xFF
     # Shuts down the display window and terminates
-    # the Python process when the key 'q' is pressed
+    # the Python process when a key is pressed on
+    # the window
     if key == ord('q'):
         cv2.destroyAllWindows()
-
 
 def process_single_image(name):
     '''
@@ -288,13 +288,13 @@ def process_single_image(name):
     if image is not None:
 
         # cv2.cvtColor(input_image, flag) where flag determines the type of conversion.
-        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
         # detectMultiScale detects objects of different sizes in the input image.
         # The detected objects are returned as a list of rectangles.
-        faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
+        faces = face_cascade.detectMultiScale(grayscale_image, scaleFactor=1.3, minNeighbors=5)
 
-        return image, gray, faces
+        return image, grayscale_image, faces
 
     else:
         print(f'The following image could not be read by OpenCV: {name}')
