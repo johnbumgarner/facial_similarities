@@ -74,6 +74,13 @@ The predict feature of LBPHFaceRecognizer will take an image that contains a fac
 <img src="https://github.com/johnbumgarner/image_similarity_experiments/blob/master/aishwarya_rai_confidence_score.jpg">
 </p>
 
+<p align="center">
+<img src="https://github.com/johnbumgarner/image_similarity_experiments/blob/master/denise_richards_confidence_score.jpg">
+</p>
+
+
+
+
 ### Notes:
 
 _The code within this repository is **not** production ready. It was strictly designed for experimental testing purposes._
