@@ -69,6 +69,7 @@ This experiment also uses the Python module cv2 and the LBPH face recognition al
 
 The predict feature of LBPHFaceRecognizer will take an image that contains a face, analyze the image and attempt to identify the face contain in this image against those within the training data. If a probable match is found within the training data then the person name and the confidence score will be overlaid on the image displayed as shown below:
 
+
 <p align="center">
 <img src="https://github.com/johnbumgarner/image_similarity_experiments/blob/master/aishwarya_rai_confidence_score.jpg">
 </p>
