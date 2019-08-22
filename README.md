@@ -63,6 +63,12 @@ During testing it was noted that all these Haar Cascade classifiers were tempera
 <img src="https://github.com/johnbumgarner/image_simarility_experiments/blob/master/haar_cascade_features.jpg">
 </p>
 
+### Experiment 5:
+
+This experiment also uses the Python module cv2 and the LBPH face recognition algorithm.  The previous experiment was designed to recognize basic facial features and this experiment will be focusing on facial prediction. In this experiment a set of 55 images of female actresses was used to create the facial prediction training data, the associated labels and identification numbers.  
+
+
+
 
 
 ### Notes:
