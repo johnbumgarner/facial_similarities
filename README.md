@@ -65,7 +65,9 @@ During testing it was noted that all these Haar Cascade classifiers were tempera
 
 ### Experiment 5:
 
-This experiment also uses the Python module cv2 and the LBPH face recognition algorithm.  The previous experiment was designed to recognize basic facial features and this experiment will be focusing on facial prediction. In this experiment a set of 55 images of female actresses was used to create the facial prediction training data, the associated labels and identification numbers.  
+This experiment also uses the Python module cv2 and the LBPH face recognition algorithm.  The previous experiment was designed to recognize basic facial features and this experiment will be focusing on facial prediction. In this experiment a set of 55 images of female actresses was used to create the facial prediction training data, the associated labels and identification numbers. 
+
+The predict feature of LBPHFaceRecognizer will take an image that contains a face, analyze the image and attempt to identify the face contain in this image against those within the training data.  If a probable match is found within the training data then the person name and the confidence score will be overlaid on the image 
 
 
 
