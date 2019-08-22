@@ -62,8 +62,8 @@ def detect_single_face(image, faces):
     :param faces: faces contains the calculate facial coordinates produced by face_cascade.detectMultiScale
     :return: image with rectangle draw around facial area
     '''
-    # (x,y) are the top-left coordinate of the rectangle
-    # (w,h) are the width and height of the rectangle
+    # (x_coordinate, y_coordinate) are the top-left coordinate of the rectangle
+    # (width, height) are the width and height of the rectangle
     for (x_coordinate, y_coordinate, width, height) in faces:
         # Draw bounding rectangle based on parameter dimensions
         # BGR color values (3 parameters)
@@ -84,8 +84,8 @@ def detect_multiple_faces(image, faces):
     :param faces: faces contains the calculate facial coordinates produced by face_cascade.detectMultiScale
     :return: image with rectangle draw around facial areas
     '''
-    # (x,y) are the top-left coordinate of the rectangle
-    # (w,h) are the width and height of the rectangle
+    # (x_coordinate, y_coordinate) are the top-left coordinate of the rectangle
+    # (width, height) are the width and height of the rectangle
     for (x_coordinate,  y_coordinate, width, height) in faces:
         # Draw bounding rectangle based on parameter dimensions
         # BGR (Blue, Green, Red) color values (3 parameters)
@@ -107,8 +107,8 @@ def detect_eyes_single_face(image, faces, grayscale_image):
     :param gray: image color conversion, which is gray scale
     :return: image with rectangle draw around eye area
     '''
-    # (x,y) are the top-left coordinate of the rectangle
-    # (w,h) are the width and height of the rectangle
+    # (x_coordinate, y_coordinate) are the top-left coordinate of the rectangle
+    # (width, height) are the width and height of the rectangle
     for (x_coordinate, y_coordinate, width, height) in faces:
 
         # roi_gray is a numpy.ndarray based on the gray scale of the image
@@ -141,8 +141,8 @@ def detect_nose_single_face(image, faces, grayscale_image):
     :param gray: image color conversion, which is gray scale
     :return: image with rectangle draw around nose area
     '''
-    # (x,y) are the top-left coordinate of the rectangle
-    # (w,h) are the width and height of the rectangle
+    # (x_coordinate, y_coordinate) are the top-left coordinate of the rectangle
+    # (width, height) are the width and height of the rectangle
     for (x_coordinate, y_coordinate, width, height) in faces:
 
         # roi_gray is a numpy.ndarray based on the gray scale of the image
@@ -175,8 +175,8 @@ def detect_mouth_single_face(image, faces, grayscale_image):
     :param gray: image color conversion, which is gray scale
     :return: image with rectangle draw around moutharea
        '''
-    # (x,y) are the top-left coordinate of the rectangle
-    # (w,h) are the width and height of the rectangle
+    # (x_coordinate, y_coordinate) are the top-left coordinate of the rectangle
+    # (width, height) are the width and height of the rectangle
     for (x_coordinate, y_coordinate, width, height) in faces:
 
         # roi_gray is a numpy.ndarray based on the gray scale of the image
@@ -209,8 +209,8 @@ def detect_single_face_multiple_features(image, faces, grayscale_image):
     :param gray:  image color conversion, which is gray scale
     :return: image with rectangle draw around all facial areas
     '''
-    # (x,y) are the top-left coordinate of the rectangle
-    # (w,h) are the width and height of the rectangle
+    # (x_coordinate, y_coordinate) are the top-left coordinate of the rectangle
+    # (width, height) are the width and height of the rectangle
     for (x_coordinate, y_coordinate, width, height) in faces:
         # Draw bounding rectangle based on parameter dimensions
         # BGR (Blue, Green, Red) color values (3 parameters)
