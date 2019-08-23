@@ -73,8 +73,7 @@ The predict feature of LBPHFaceRecognizer was utilized in this experiment. The p
 <img src="https://github.com/johnbumgarner/image_similarity_experiments/blob/master/aishwarya_rai_confidence_score.jpg">
 </p>
 
-The algorithm was able to successfully predict that an image contain in the training data matched known target image, which was used in the training. The success rate was less accurate for images not contained in the 
-
+The algorithm was able to successfully predict that an image contain in the training data matched an image that was used in the training. The success rate was less accurate for images not used in the training data. 
 
 ### Notes:
 
