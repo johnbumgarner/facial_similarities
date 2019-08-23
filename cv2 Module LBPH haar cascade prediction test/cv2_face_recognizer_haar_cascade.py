@@ -162,8 +162,12 @@ def create_training_data(image_names, x_train, y_labels):
     # The training images, that means the faces you want to learn.
     # The image data and their corresponding labels have to be given
     # as a vector.
+
     recognizer.train(x_train, np.array(y_labels))
-    print ('Writing out the image training data.')
+    print ('Writing out the recognition training data.')
+
+    print("Total number of faces: ", len(x_train))
+    print("Total number of labels: ", len(y_labels))
 
     # Saves a FaceRecognizer and its model state to a
     # given filename, either as XML or YML (aka YAML)
@@ -226,20 +230,20 @@ def facial_recognition(image_name, image_height, image_width):
         roi_gray = grayscale_image[y_coordinate:y_coordinate + height, x_coordinate:x_coordinate + width]
 
         # predicts a label and associated confidence (e.g. distance) for a given input image.
-        id, confidence_face = recognizer.predict(roi_gray)
+        id, confidence_score = recognizer.predict(roi_gray)
 
-        # The confidence score is adjustable, but setting the score
+        # The confidence score  (0-100) is adjustable, but setting the score
         # to high can produce inviald results.
-        if confidence_face <= 10:
+        if confidence_score <= 8:
 
             # extract the id number associated with a specific image label
             name = labels[id]
 
             # create the text to be overlaid on the image
-            label_info = (f'Name: {name} \n\nConfidence score: {confidence_face}')
+            label_info = (f'Name: {name} \n\nConfidence score: {confidence_score}')
 
             # sets the starting location of the text
-            y0, dy = 15, 12
+            y0, dy = 20, 12
 
             # splits the label information based on new lines
             for i, line in enumerate(label_info.split('\n')):
@@ -250,11 +254,11 @@ def facial_recognition(image_name, image_height, image_width):
                 # the function putText renders the specified text string in the image.
                 cv2.putText(image, line, (10, y_coordinate), font, fntSize, fntColor, fntThickness)
 
-        elif confidence_face > 10:
+        elif confidence_score > 8:
             name = 'Unknown Person'
 
             # the function putText renders the specified text string in the image.
-            cv2.putText(image, name, (x_coordinate - 24, y_coordinate - 24), font, fntSize, fntColor, fntThickness, cv2.LINE_AA)
+            cv2.putText(image, name, (x_coordinate - 10, y_coordinate - 10), font, fntSize, fntColor, fntThickness)
 
     display_facial_prediction_results(image)
 
@@ -269,7 +273,7 @@ def display_facial_prediction_results(image):
     # Shuts down the display window and terminates
     # the Python process when a key is pressed on
     # the window.
-    if key == 113 or key == 27: # press 'ESC' to quit
+    if key == 113 or key == 27:
         cv2.destroyAllWindows()
 
 
