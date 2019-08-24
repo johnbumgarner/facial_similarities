@@ -77,7 +77,7 @@ The algorithm was able to successfully predict that an image contained in the tr
 
 ### Notes:
 
-_The code within this repository is **not** production ready. It was strictly designed for experimental testing purposes._
+_The code within this repository is **not** production ready. It was **strictly** designed for experimental testing purposes only._
 
 
 
