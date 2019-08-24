@@ -46,7 +46,7 @@ In testing both methods were ables to successfully identify the target image of 
 
 ## Facial Detection/Recognition/Prediction Experiments
 
-### Experiment 4:
+### Experiment 1:
 
 This experiment used the Python module cv2. The Python package is opencv-python.  This opencv-python package is the Open Source Computer Vision (OpenCV), which is a computer vision and machine learning software library. Computer vision and digital image processing are currently being widely applied in face recognition, criminal investigation, signature pattern detection in banking, digital documents analysis and smart tag based vehicles for recognition. 
 
@@ -65,7 +65,7 @@ During testing it was noted that all these Haar Cascade classifiers were tempera
 <img src="https://github.com/johnbumgarner/image_simarility_experiments/blob/master/haar_cascade_features.jpg">
 </p>
 
-### Experiment 5:
+### Experiment 2:
 
 This experiment also uses the Python module cv2 and the LBPH face recognition algorithm.  The previous experiment was designed to do some base level facial prediction. In this experiment a set of 55 images of female actresses was used to create the facial prediction training data, the associated labels and identification numbers. 
 
