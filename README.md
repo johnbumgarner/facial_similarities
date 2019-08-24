@@ -1,10 +1,10 @@
 # Overview
 
-This repository contains Python code used for various image similarity experiments. The primary purpose of these tests was to determine the capabilities and limitations of individual Python modules and various techniques used for image simarility. 
+This repository contains Python code used for various image closeness experiments. The primary purpose of these tests was to determine the capabilities and limitations of individual Python modules and various techniques used for facial detection, facial recognition, facial prediction and image similarity.
+ 
+**The primary objective of these experiments:** _Provided a photo of a target person, and a set of other photos, is the target person one of the people in the set of photographs._
 
-The primary objective of these experiments: Provided a photo of a target person, and a set of other photos, is the target person one of the people in the set of photographs. 
-
-The set of images used in these image simarility experiments were of well-known female actresses wearing earrings.  
+The set of images used in the image simarility experiments (1-3) were of well-known female actresses wearing earrings.  
 
 <p align="center"><br>
 <img src="https://github.com/johnbumgarner/image_simarility_experiments/blob/master/females_with_earrings_test_images.jpg">
