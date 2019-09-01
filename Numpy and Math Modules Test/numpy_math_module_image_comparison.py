@@ -1,3 +1,11 @@
+#############################################################################################
+# The OS module in provides functions for interacting with the operating system.
+#
+# OS.walk() generate the file names in a directory tree by walking the tree.
+#############################################################################################
+import os
+from os import walk
+
 ######################################################################################
 # The Python module Pillow is the folk of PIL, the Python Imaging Library
 # reference: https://pillow.readthedocs.io/en/3.0.x/index.html
@@ -5,41 +13,46 @@
 # This module is used to load images
 from PIL import Image
 
-# numpy is one of fundamental packages for scientific computing with Python
+######################################################################################
+# The module NumPy is the fundamental package for scientific computing with Python.
+# reference: https://docs.scipy.org/doc/numpy/
+######################################################################################
 import numpy as np
 
-# provides access to the mathematical functions
+######################################################################################
+# This module provides access to the mathematical functions defined by the C standard.
+# reference: https://docs.python.org/3/library/math.html
+######################################################################################
 from math import *
 
-# provides functions that create iterators for efficient looping
+######################################################################################
+# This module provides functions that create iterators for efficient looping
+# reference: https://docs.python.org/2/library/itertools.html
+######################################################################################
 from itertools import combinations_with_replacement
 
-image_directory = 'female_headshots_with_earrings'
+def get_image_files(directory_of_images):
+    '''
+    This function is designed to traverse a directory tree and extract all
+    the image names contained in the directory.
 
-# This list contains images of well-known female actresses
-# wearing earrings
-headshots = ['elizabeth hurley_earrings.jpeg', 'hilary_swank_earrings.jpeg', 'jennifer_anoston_earrings.jpeg', 'jennifer_anoston_earrings_02.jpeg',
-             'jennifer_anoston_earrings_03.jpeg', 'jennifer_garner_earrings.jpeg', 'julia_roberts_earrings.jpeg', 'maggie_gyllenhaal_earrings.jpg',
-             'natalie_portman_earrings.jpeg', 'nicole_kidman_earrings.jpeg', 'poppy_delevingne_earrings.jpeg','taylor_swift_earrings.jpeg']
+    :param directory_of_images: the name of the target directory containing
+           the images to be trained on.
+    :return: list of images to be processed.
+    '''
+    images_to_process = []
+    for (dirpath, dirnames, filenames) in walk(directory_of_images):
+        for filename in filenames:
+            accepted_extensions = ('.bmp', '.jpg', '.jpeg', '.png', '.tiff')
+            if filename.endswith(accepted_extensions):
+                images_to_process.append(os.path.join(dirpath, filename))
+        return images_to_process
 
-target_image  = 'jennifer_anoston_earrings_02.jpeg'
-
-# Image file extensions
-accepted_extensions = ['jpg', 'jpeg', 'png', 'bmp', 'tiff', 'JPG']
-
-def filter_file_extensions(filenames):
-    acceptable_file_types = []
-    for fname in filenames:
-        extension = (fname.split('.'))[-1]
-        if extension in accepted_extensions:
-            acceptable_file_types.append(fname)
-    return acceptable_file_types
-
-def getPercentOfImageSize(image, percent):
+def get_percent_of_image_size(image, percent):
     h, w = image.size
     return (int(h * (percent/100)), int(w * (percent/100)))
 
-def filterByThreshold(imgsWithPercentList, threshold):
+def filter_by_threshold(imgsWithPercentList, threshold):
     filteredList = []
     for obj in imgsWithPercentList:
         image_one, image_two , percent = obj
@@ -47,7 +60,7 @@ def filterByThreshold(imgsWithPercentList, threshold):
             filteredList.append((image_one, image_two, percent))
     return filteredList
 
-def normalCurveFunction(variance , segment):
+def normal_curve_function(variance , segment):
     points = []
     y_sum = 0
     if variance == 0:
@@ -59,7 +72,7 @@ def normalCurveFunction(variance , segment):
         points.reverse()
     return points, y_sum
 
-def preProcessImage(image_one, image_two, additionalResize = False, maxImageSize = 1000):
+def pre_process_images(image_one, image_two, additionalResize = False, maxImageSize = 1000):
     lowerBoundSize = (min(image_one.size[0], image_two.size[0]), min(image_one.size[1], image_two.size[1]))
     image_one = image_one.resize(lowerBoundSize, resample=Image.LANCZOS)
     image_two = image_two.resize(lowerBoundSize, resample=Image.LANCZOS)
@@ -81,10 +94,12 @@ def get_ssim_similarity(image_one_name, image_two_name, windowSize = 7, dynamicR
     :param dynamicRange:
     :return:  computational score and image names
     '''
-    image_one, image_two = Image.open(f'{image_directory}/{image_one_name}'), Image.open(f'{image_directory}/{image_two_name}')
+    image_one = Image.open(f'{image_one_name}')
+    image_two = Image.open(f'{image_two_name}')
+
     if min(list(image_one.size) + list(image_two.size)) < 7:
         raise Exception ("One of the images was too small to process uing the SSIM approach")
-    image_one, image_two = preProcessImage(image_one, image_two, True)
+    image_one, image_two = pre_process_images(image_one, image_two, True)
     image_one, image_two = image_one.convert('I'), image_two.convert('I')
     c1 = (dynamicRange * 0.01) ** 2
     c2 = (dynamicRange * 0.03) ** 2
@@ -105,9 +120,13 @@ def get_ssim_similarity(image_one_name, image_two_name, windowSize = 7, dynamicR
     similarityPercent = (ssim * pixelLength / (adjustedHeight * adjustedWidth)) * 100
     return (image_one_name, image_two_name, round(similarityPercent, 2))
 
-def hammingResize(image_one, image_two, resizeFactor):
-    image_one = image_one.resize(getPercentOfImageSize(image_one, resizeFactor), resample=Image.BILINEAR)
-    image_two = image_two.resize(getPercentOfImageSize(image_two, resizeFactor), resample=Image.BILINEAR)
+def hamming_image_resizing(image_one, image_two, resizeFactor):
+    image_one = image_one.resize(get_percent_of_image_size(image_one, resizeFactor), resample=Image.BILINEAR)
+    image_two = image_two.resize(get_percent_of_image_size(image_two, resizeFactor), resample=Image.BILINEAR)
+    # convert returns a converted copy of the image
+    # the convert('I') mode returns a 32-bit signed integer pixels
+    # reference: https://pillow.readthedocs.io/en/4.2.x/reference/Image.html#PIL.Image.Image.convert
+    # reference: https://pillow.readthedocs.io/en/4.2.x/handbook/concepts.html#concept-modes
     image_one = image_one.convert('I')
     image_two = image_two.convert('I')
     np_image_one = np.array(image_one)
@@ -116,20 +135,24 @@ def hammingResize(image_one, image_two, resizeFactor):
 
 def get_hamming_similarity(image_one_name, image_two_name):
     '''
+    The Hamming distance is a method that can be used to measure the similarity between two images.
+    Given two (normally binary) vectors, the Hamming distance measures the number of 'disagreements'
+    between the two vectors. Two identical vectors would have zero disagreements, and thus perfect
+    similarity.
 
     :param image_one_name: primary image to evaluate against a secondary image
     :param image_two_name: secondary image to evaluate against the primary image
     :return: computational score and image names
     '''
-    image1 = Image.open(f'{image_directory}/{image_one_name}')
-    image2 = Image.open(f'{image_directory}/{image_two_name}')
-    origSize = min(image1.size[0], image2.size[0]) * min(image1.size[1], image2.size[1])
-    image1, image2 = preProcessImage(image1, image2)
-    assert image1.size[0] * image1.size[1] == origSize
+    image_one = Image.open(f'{image_one_name}')
+    image_two = Image.open(f'{image_two_name}')
+    origSize = min(image_one.size[0], image_two.size[0]) * min(image_one.size[1], image_two.size[1])
+    image_one, image_two = pre_process_images(image_one, image_two)
+    assert image_one.size[0] * image_one.size[1] == origSize
     cumulativeSimilarityScore = 0
-    samplePts, sampleSum = normalCurveFunction(300, 10)
+    samplePts, sampleSum = normal_curve_function(300, 10)
     for (resizeFactor, factorWeightage) in samplePts:
-        np_image_one, np_image_two = hammingResize(image1, image2, resizeFactor)
+        np_image_one, np_image_two = hamming_image_resizing(image_one, image_two, resizeFactor)
         if (np_image_one.size / origSize < 0.1) or (np_image_two.size / origSize < 0.1):
             for (x, y) in samplePts:
                 if x <= resizeFactor:
@@ -142,40 +165,45 @@ def get_hamming_similarity(image_one_name, image_two_name):
             weightedSimilarityScore = factorWeightage * currentSimilarityScore
             cumulativeSimilarityScore += weightedSimilarityScore
     averageSimilarityScore = (cumulativeSimilarityScore / sampleSum) * 100
-    return (image_one_name, image_two_name, round(averageSimilarityScore, 2))
+    return image_one_name, image_two_name, round(averageSimilarityScore, 2)
 
 
-def processSimilarity(image_filenames, approach, threshold):
+def process_image_similarity(image_filenames, approach, threshold):
     params = combinations_with_replacement(image_filenames, 2)
     similarity_percentage_ratio = []
 
-    if approach == 'N':
+    if approach == 'HAM':
         for (image_one, image_two) in params:
             result = get_hamming_similarity(image_one, image_two)
             similarity_percentage_ratio.append(result)
-    elif approach == 'E':
+    elif approach == 'SIM':
         for (image_one, image_two) in params:
             result = get_ssim_similarity(image_one, image_two)
             similarity_percentage_ratio.append(result)
 
-    final_results = filterByThreshold(similarity_percentage_ratio, threshold)
-
+    final_results = filter_by_threshold(similarity_percentage_ratio, threshold)
     return final_results
 
 
+target_image  = 'jennifer_aniston.jpeg'
+image_directory = 'female_headshots_with_earrings'
+
+images = get_image_files(image_directory)
+
 ssim_results = []
 hamming_results = []
-for image in headshots:
+
+for image in images:
     ssim = get_ssim_similarity(target_image, image)
     ssim_results.append(ssim)
 
     hamming = get_hamming_similarity(target_image, image)
     hamming_results.append(hamming)
 
-
-ssim_results.sort(key=lambda tup: tup[2:2], reverse=True)
+ssim_results.sort(key = lambda tup: tup[2:2])
 print ('##################################################')
 print ('STRUCTURAL SIMILARITY (SSIM) RESULTS')
+print ('##################################################')
 for item in ssim_results:
     original_image = item[0]
     compare_image = item[1]
@@ -189,9 +217,10 @@ for item in ssim_results:
 
 print ('\n')
 
-hamming_results.sort(key=lambda tup: tup[2:2], reverse=True)
+hamming_results.sort(key = lambda tup: tup[2:2])
 print ('##################################################')
 print ('HAMMING DISTANCE RESULTS')
+print ('##################################################')
 for item in hamming_results:
     original_image = item[0]
     compare_image = item[1]
@@ -206,15 +235,19 @@ for item in hamming_results:
 
 # This section compares all the images in the control set
 similarity_results = []
-results = processSimilarity(headshots, 'N', 0.5)
+# HAM = Hamming distance
+# SIM = Structural Similarity Index (SSIM)
+# the threshold float is adjustable
+results = process_image_similarity(images, 'HAM', 0.5)
 for item in results:
     similarity_results.append(item)
 
 print ('\n')
 
-similarity_results.sort(key=lambda tup: tup[2], reverse=True)
+similarity_results.sort(key = lambda tup: tup[2], reverse = True)
 print ('##################################################')
 print ('IMAGE SIMILARITY RESULTS - ALL IMAGES')
+print ('##################################################')
 for item in similarity_results:
     original_image = item[0]
     compare_image = item[1]
@@ -225,7 +258,3 @@ for item in similarity_results:
         print(f'similar images. similarity score: {computational_score} images evaluated: {original_image} -- {compare_image}')
     elif computational_score > 50.0:
         print(f'dissimilar images. similarity score: {computational_score} images evaluated: {original_image} -- {compare_image}')
-
-
-
-
