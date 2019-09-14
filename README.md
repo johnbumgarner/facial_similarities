@@ -3,6 +3,7 @@
 <div style="text-align: justify">
 This repository contains Python code used for various image closeness experiments. The primary purpose of these tests was to determine the capabilities and limitations of individual Python modules and various techniques used for facial detection, facial recognition, facial prediction and image similarity.
 </div>
+
  
 **The primary objective of these experiments:** _Provided a photo of a target person, and a set of other photos, is the target person one of the people in the set of photographs._
 
@@ -42,7 +43,9 @@ The threshold for _wavelet_ similar images was set at less than 15, which did no
 
 ### Experiment 3:
 
+<p align="justify">
 This experiment used the Python modules Numpy and Math. Numpy is one of fundamental packages for scientific computing with Python and Math provides access to various access mathematical functions. This experiment focused on Structural Similarity Index (SSIM), which is the a method for measuring the similarity between two images and Hamming distance, which determines how similar two images are.
+</p>
 
 In testing both methods were ables to successfully identify the target image of Jennifer Aniston from the control set of images. As in the previous experiments the SSIM and Hamming measurement generated a computational score based on similarity and distance. Establishing a computational score threshold using these two measurement methods was highly problematic, because it produced a considerable amount of false positives.
 
