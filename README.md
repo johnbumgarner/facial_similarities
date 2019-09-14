@@ -1,11 +1,12 @@
 # Overview
 
-<div style="text-align: justify">
+<p align="justify">
 This repository contains Python code used for various image closeness experiments. The primary purpose of these tests was to determine the capabilities and limitations of individual Python modules and various techniques used for facial detection, facial recognition, facial prediction and image similarity.
-</div>
+</p>
 
- 
+<p align="justify">
 **The primary objective of these experiments:** _Provided a photo of a target person, and a set of other photos, is the target person one of the people in the set of photographs._
+</p>
 
 The set of images used in the image simarility experiments were of well-known female actresses wearing earrings.  
 
@@ -17,7 +18,9 @@ The set of images used in the image simarility experiments were of well-known fe
 
 ### Experiment 1:
 
+<p align="justify">
 This experiment used the Python module Pillow, which is a folk of PIL, the Python Imaging Library. The function used was PIL.ImageChops.difference(image1, image2), which returns the absolute value of the pixel-by-pixel difference between two images. This function was able to correctly identify the two images of Jennifer Aniston that were exactly the same.  The function produced no false positives.
+</p>
 
 ### Experiment 2:
 
