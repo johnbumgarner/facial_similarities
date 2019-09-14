@@ -67,7 +67,7 @@ During testing it was noted that all these Haar Cascade classifiers were tempera
 
 ### Experiment 2:
 
-This experiment also uses the Python module cv2 and the LBPH face recognition algorithm.  The previous experiment was designed to do some base level facial prediction. In this experiment a set of 55 images of female actresses was used to create the facial prediction training data, the associated labels and identification numbers. 
+This experiment also uses the Python module cv2 and the LBPH face recognition algorithm.  The previous experiment was designed to do some base level facial prediction. In this experiment a set of 74 images of female actresses was used to create the facial prediction training data, the associated labels and identification numbers. 
 
 The predict feature of LBPHFaceRecognizer was utilized in this experiment. The prediction of the LBPH face recognition algorithm will analyze an image containing face and attempt to identify the face contain in the image against images within the training data. If a probable match is found within the training data then the person name and the confidence score will be overlaid on the image displayed as shown below:
 
@@ -76,6 +76,19 @@ The predict feature of LBPHFaceRecognizer was utilized in this experiment. The p
 </p>
 
 The algorithm was able to successfully predict that an image contained in the training data matched an image that was used in the training. A confidence_score of '0' is a 100% match. The success rate was less accurate for images not used in the training data. 
+
+
+### Experiment 3:
+
+The previous experiment used the Python module cv2 and the LBPH face recognition algorithm, but this experiment includes horizontal image flipping. In this experiment a set of 74 images of female actresses was used to create the facial prediction training data, the associated labels and identification numbers. 
+
+The predict feature of LBPHFaceRecognizer was also utilized in this experiment. The prediction of the LBPH face recognition algorithm will analyze an image containing face and attempt to identify the face contain in the image against images (original and horizontal flipped) within the training data. If a probable match is found within the training data then the person name and the confidence score will be overlaid on the image displayed as shown below:
+
+<p align="center"><br>
+<img src="https://github.com/johnbumgarner/image_similarity_experiments/blob/master/aishwarya_rai_confidence_score.jpg">
+</p>
+
+The algorithm was able to successfully predict that an image contained in the training data matched an image that was used in the training. A confidence_score of '0' is a 100% match. The success rate was again less accurate for images not used in the training data. 
 
 ### Notes:
 
