@@ -106,7 +106,7 @@ The predict feature of LBPHFaceRecognizer was utilized in this experiment. The p
 </p>
 
 <p align="justify">
-The algorithm was able to successfully predict that an image contained in the training data matched an image that was used in the training. A confidence_score of '0' is a 100% match. The success rate was less accurate for images not used in the training data. 
+The algorithm was able to successfully predict that an image contained in the training data matched an image that was used in creating the training data. A confidence_score of '0' is a 100% match. The success rate was less accurate for images not used in the training data. 
 </p>
 
 ### Experiment 3:
@@ -124,7 +124,7 @@ The predict feature of LBPHFaceRecognizer was also utilized in this experiment. 
 </p>
 
 <p align="justify">
-The algorithm was able to successfully predict that an image contained in the training data matched an image that was used in the training. The success rate was again less accurate for images not used in the training data. 
+The algorithm was able to successfully predict that an image contained in the training data matched either an original or horizontal image that was used in creating the training data. The success rate was again less accurate for images not used in the training data. 
 </p>
 
 ### Notes:
