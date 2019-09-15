@@ -112,7 +112,7 @@ The algorithm was able to successfully predict that an image contained in the tr
 ### Experiment 3:
 
 <p align="justify">
-Like the previous experiment this one also uses the Python module cv2 and the LBPH face recognition algorithm, but this experiment includes horizontal image flipping. In this experiment a set of 74 images of female actresses was used to create the facial prediction training data, the associated labels and identification numbers.
+Like the previous experiment this one also uses the Python module cv2 and the LBPH face recognition algorithm, but this experiment includes horizontal image flipping. This experiment also used the same set of 74 images of female actresses. These images were used to create the facial prediction training data, the associated labels and identification numbers.
 </p>
 
 <p align="justify">
