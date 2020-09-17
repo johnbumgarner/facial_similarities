@@ -1,7 +1,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/johnbumgarner/sotu_nlp_experiments/blob/master/graphic/text-analysis.png"/>
+  <img src="https://github.com/johnbumgarner/image_closeness_experiments/blob/master/graphic/facial_recognition.png"/>
 </p>
 
 
