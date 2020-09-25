@@ -165,4 +165,8 @@ _The code within this repository is **not** production ready. It was **strictly*
 
 In Euclidean geometry, two objects are similar if they have the same shape, or one has the same shape as the mirror image of the other. More precisely, one can be obtained from the other by uniformly scaling, possibly with additional translation, rotation and reflection.
 
+```python
+s = "Python syntax highlighting"
+print s
+```
 
