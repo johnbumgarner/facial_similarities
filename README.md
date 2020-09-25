@@ -1,35 +1,56 @@
-
-
 <p align="center">
   <img src="https://github.com/johnbumgarner/image_closeness_experiments/blob/master/graphic/facial_recognition.png"/>
 </p>
 
-
-
-
-# Overview
+# Overview Image Similarities
 
 <p align="justify">
-This repository contains Python code used for various image closeness experiments. The primary purpose of these tests was to determine the capabilities and limitations of individual Python modules and various techniques used for facial detection, facial recognition, facial prediction and image similarity.
+
+Most humans can look at two photos and quickly determine if the images are either similarity or dissimilarity in nature. Computers can be programmed to perform a similar task, but the results can vary, because of multiple factors(e.g., lighting conditions, perspectives) that humans can instinctively do automatically.  Humans have little difficulty seeing the subtle differents between a rose and a camellia or a gardenia and a rose. A computer on the other hand will recognize these objects as flowers, but would likely classify all of these images as a single type of flower, roses.   
+
+There are numerous use cases for image similarities technologies. These use cases range from duplicate image detection to domain specific image clustering. Identifying duplicate images in Apple Photo is a common use case for many of us dealing with a large digital image library. Some of us have likey used Google’s Reverse Image Search to look for a specific photo that we want to know more about. Google will scour its massive database for images similar to the one used in your query. 
+
 </p>
 
+## Primary objective of this repository
+<p align="justify">
+This repository is going to examine several of the methods used to ascertain if two or more images have similarity or dissimilarity. The set of images used in these image simarility tests are publicly available photographs of well-known female actresses. One dataset has 12 images of these actresses wearing earrings. The different photos of Jennifer Aniston are within the first dataset.  The second dataset consists of 50 images of actresses with no duplicates.  The second set is more diversed, because it included mutiple skin tones and hair colors.   
 
-**The primary objective of these experiments:** _Provided a photo of a target person, and a set of other photos, is the target person one of the people in the set of photographs._
-
-
-The set of images used in the image simarility experiments were of well-known female actresses wearing earrings.  
-
-<p align="center"><br>
-<img src="https://github.com/johnbumgarner/image_simarility_experiments/blob/master/females_with_earrings_test_images.jpg">
+Another objective of this repository to determine the capabilities and limitations of the Python libraries used to perform these image simarility tests.
 </p>
 
 ## Image Simarility Experiments
 
-### Experiment 1:
+### Python Imaging Library:
 
 <p align="justify">
-This experiment used the Python module Pillow, which is a folk of PIL, the Python Imaging Library. The function used was PIL.ImageChops.difference(image1, image2), which returns the absolute value of the pixel-by-pixel difference between two images. This function was able to correctly identify the two images of Jennifer Aniston that were exactly the same.  The function produced no false positives.
+This experiment used the Python module <i>Pillow</i>, which is a folk of PIL, the Python Imaging Library. The Pillow function used in this experiment was 
+<i>PIL.ImageChops</i>. The ImageChops module contains a number of arithmetical image operations, called channel operations (“chops”). These can be used for various purposes, including special effects, image compositions, algorithmic painting, and more.  The sub-function used was <i>difference</i>, which 
+  
+  
+  
+  
+  Returns the absolute value of the pixel-by-pixel difference between the two images.
+  
+  
+  to ImageChops
+
+
+The ImageChops module contains a number of arithmetical image operations, called channel operations (“chops”). These can be used for various purposes, including special effects, image compositions, algorithmic painting, and more.
+
+
+
+
+The function used was PIL.ImageChops.difference(image1, image2), which returns the absolute value of the pixel-by-pixel difference between two images. This function was able to correctly identify the two images of Jennifer Aniston that were exactly the same.  The function produced no false positives.
 </p>
+
+
+
+
+
+
+
+
 
 ### Experiment 2:
 
@@ -140,5 +161,12 @@ The algorithm was able to successfully predict that an image contained in the tr
 
 _The code within this repository is **not** production ready. It was **strictly** designed for experimental testing purposes only._
 
+
+####
+<p align="center"><br>
+<img src="https://github.com/johnbumgarner/image_simarility_experiments/blob/master/females_with_earrings_test_images.jpg">
+</p>
+
+In Euclidean geometry, two objects are similar if they have the same shape, or one has the same shape as the mirror image of the other. More precisely, one can be obtained from the other by uniformly scaling, possibly with additional translation, rotation and reflection.
 
 
