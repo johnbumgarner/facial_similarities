@@ -16,7 +16,7 @@ There are numerous use cases for image similarities technologies. These use case
 <p align="justify">
 This repository is going to examine several of the methods used to ascertain if two or more images have similarity or dissimilarity. The set of images used in these image simarility tests are publicly available photographs of well-known female actresses. One dataset has 12 images of these actresses wearing earrings. The different photos of Jennifer Aniston are within the first dataset.  The second dataset consists of 50 images of actresses with no duplicates.  The second set is more diversed, because it included mutiple skin tones and hair colors.   
 
-Another objective of this repository to determine the capabilities and limitations of the Python libraries used to perform these image simarility tests.
+Another objective of this repository is to determine the capabilities and limitations of the Python libraries used to perform these image simarility tests.
 </p>
 
 ## Image Simarility Experiments
@@ -33,7 +33,7 @@ The base_image in this experiment was one of Jennifer Aniston. The comparison_im
 
     Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/elizabeth hurley_earrings.jpeg
     Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/poppy_delevingne_earrings.jpeg
-    Photos with have dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/hilary_swank_earrings.jpeg
+    Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/hilary_swank_earrings.jpeg
     Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/nicole_kidman_earrings.jpeg
     Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/jennifer_aniston_earrings_03.jpeg
     Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/jennifer_aniston_earrings_02.jpeg
@@ -44,20 +44,11 @@ The base_image in this experiment was one of Jennifer Aniston. The comparison_im
     Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/julia_roberts_earrings.jpeg
     Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/natalie_portman_earrings.jpeg
 
-This pixel-by-pixel comparison is useful to find exact duplicates only and will not match images that have been slightly altered thus resulting in a different -pixel value.
+This pixel-by-pixel comparison is useful in finding exact duplicates, but it will not match images that have been slightly altered thus resulting in a different pixel value.
 </p>
 
-
-
-
-
-
-
-
-
-### Experiment 2:
-
-This experiment used the Python module ImageHash, which was developed by Johannes Bucher.  This module has four hashing methods:
+### ImageHash Library:
+This experiment used the Python module <i>ImageHash,/i>, which was developed by Johannes Bucher.  This module has four hashing methods:
 
 1. aHash: average hash, for each of the pixels output 1 if the pixel is bigger or equal to the average and 0 otherwise.
 
@@ -67,27 +58,27 @@ This experiment used the Python module ImageHash, which was developed by Johanne
 
 4. wavelet: wavelet hashing, works in the frequency domain as pHash but it uses Discrete Wavelet Transformation (DWT) instead of DCT.
 
-<p align="justify">
+#### aHash
+
+
 All four hashing methods were able to accurately identify the two images of Jennifer Aniston.  All the hashing methods produce similarity scores.  The threshold of these scores are adjustable.  
-</p>
 
-<p align="justify">
 During testing the threshold for _aHash_ similar images was set at less than 20, which successful matched another Jennifer Aniston image (jennifer_anoston_earrings_03.jpeg), but produced 2 false positives.  The _aHash_ dissimilar image threshold was set at greater than 20.  The third Jennifer Aniston (jennifer_anoston_earrings.jpeg) was in this dissimilar set.  
-</p>
 
-<p align="justify">
+
+
 The threshold for _dHash_ similar images was set at less than 35, which successful matched another Jennifer Aniston image (jennifer_anoston_earrings.jpeg) and produced no false positives. The _dHash_ dissimilar image threshold was set at greater than 35.  The third Jennifer Aniston (jennifer_anoston_earrings_03.jpeg) was in this dissimilar set. 
-</p>
 
-<p align="justify">
+
+
 The threshold for _pHash_ similar images was set at less than 35, which did not match any addtional images of Jennifer Aniston in the control set. Setting this threshold to less than 40 produced 2 false positives. The _pHash_ dissimilar image threshold was set at greater than 40.  Both of the other Jennifer Aniston images were in this dissimilar set. 
-</p>
 
-<p align="justify">
+
+
 The threshold for _wavelet_ similar images was set at less than 15, which did not match any additional images of Jennifer Aniston in the control set. Setting this threshold to less than 20 produced 2 false positives. Setting this threshold to less than 30 produced 3 false positives and identified another Jennifer Aniston (jennifer_anoston_earrings_03.jpeg) image. The _wavelet_ dissimilar image threshold was set at greater than 15.  Both of the other Jennifer Aniston images were in this dissimilar set. 
 </p>
 
-### Experiment 3:
+### Numpy and Math Library:
 
 <p align="justify">
 This experiment used the Python modules Numpy and Math. Numpy is one of fundamental packages for scientific computing with Python and Math provides access to various access mathematical functions. This experiment focused on Structural Similarity Index (SSIM), which is the a method for measuring the similarity between two images and Hamming distance, which determines how similar two images are.
@@ -96,6 +87,8 @@ This experiment used the Python modules Numpy and Math. Numpy is one of fundamen
 <p align="justify">
 In testing both methods were ables to successfully identify the target image of Jennifer Aniston from the control set of images. As in the previous experiments the SSIM and Hamming measurement generated a computational score based on similarity and distance. Establishing a computational score threshold using these two measurement methods was highly problematic, because it produced a considerable amount of false positives.
 </p>
+
+
 
 ## Facial Detection/Recognition/Prediction Experiments
 
