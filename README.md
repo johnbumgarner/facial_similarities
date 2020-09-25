@@ -27,7 +27,10 @@ Another objective of this repository is to determine the capabilities and limita
 This experiment used the Python module <i>Pillow</i>, which is a folk of PIL, the Python Imaging Library. The Pillow function used in this experiment was 
 <i>PIL.ImageChops</i>. The ImageChops module contains a number of arithmetical image operations, called channel operations (“chops”). These can be used for various purposes, including special effects, image compositions, algorithmic painting, and more.  The sub-function used was <i>difference</i>, which returns the absolute value of the pixel-by-pixel difference between two images.  Here is how the function is called.
   
-    PIL.ImageChops.difference(base_image, comparison_image)
+  
+```python
+PIL.ImageChops.difference(base_image, comparison_image)
+```
   
 The base_image in this experiment was one of Jennifer Aniston. The comparison_image dataset used in this experiment was the one that contained 12 images of actresses wearing earrings.  The are 3 images of Jennifer Aniston in this dataset, but only one of these images is an absolute match.  
 
@@ -165,8 +168,5 @@ _The code within this repository is **not** production ready. It was **strictly*
 
 In Euclidean geometry, two objects are similar if they have the same shape, or one has the same shape as the mirror image of the other. More precisely, one can be obtained from the other by uniformly scaling, possibly with additional translation, rotation and reflection.
 
-```python
-s = "Python syntax highlighting"
-print s
-```
+
 
