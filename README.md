@@ -90,14 +90,68 @@ The average hash algorithm correctly matched the Jennifer Aniston base image to 
 
 
 #### dHash algorithm
+
 The threshold for _dHash_ similar images was set at less than 35, which successful matched another Jennifer Aniston image (jennifer_anoston_earrings.jpeg) and produced no false positives. The _dHash_ dissimilar image threshold was set at greater than 35.  The third Jennifer Aniston (jennifer_anoston_earrings_03.jpeg) was in this dissimilar set. 
+
+<b>dHash results</b>
+
+| Base Image Name         | Comparison Image Name               | Similarity Score |
+| ---------------------   | ---------------------               | ---:  
+| jennifer_aniston.jpeg   |  jennifer_aniston_earrings.jpeg     | 0
+| jennifer_aniston.jpeg   |  hilary_swank_earrings.jpeg         | 18
+| jennifer_aniston.jpeg   |  poppy_delevingne_earrings.jpeg     | 21
+| jennifer_aniston.jpeg   |  jennifer_aniston_earrings_02.jpeg  | 22
+| jennifer_aniston.jpeg   |  taylor_swift_earrings.jpeg         | 25
+| jennifer_aniston.jpeg   |  julia_roberts_earrings.jpeg        | 26
+| jennifer_aniston.jpeg   |  natalie_portman_earrings.jpeg      | 27
+| jennifer_aniston.jpeg   |  elizabeth hurley_earrings.jpeg     | 28
+| jennifer_aniston.jpeg   |  maggie_gyllenhaal_earrings.jpg     | 28
+| jennifer_aniston.jpeg   |  nicole_kidman_earrings.jpeg        | 32
+| jennifer_aniston.jpeg   |  jennifer_garner_earrings.jpeg      | 32
+| jennifer_aniston.jpeg   |  jennifer_aniston_earrings_03.jpeg  | 35
 
 
 #### pHash algorithm
 The threshold for _pHash_ similar images was set at less than 35, which did not match any addtional images of Jennifer Aniston in the control set. Setting this threshold to less than 40 produced 2 false positives. The _pHash_ dissimilar image threshold was set at greater than 40.  Both of the other Jennifer Aniston images were in this dissimilar set. 
 
+<b>pHash results</b>
+
+| Base Image Name         | Comparison Image Name               | Similarity Score |
+| ---------------------   | ---------------------               | ---:  
+| jennifer_aniston.jpeg   | jennifer_aniston_earrings.jpeg      | 0
+| jennifer_aniston.jpeg   | elizabeth hurley_earrings.jpeg      | 24
+| jennifer_aniston.jpeg   | poppy_delevingne_earrings.jpeg      | 26
+| jennifer_aniston.jpeg   | hilary_swank_earrings.jpeg          | 26
+| jennifer_aniston.jpeg   | natalie_portman_earrings.jpeg       | 26
+| jennifer_aniston.jpeg   | jennifer_aniston_earrings_02.jpeg   | 28
+| jennifer_aniston.jpeg   | maggie_gyllenhaal_earrings.jpg      | 28
+| jennifer_aniston.jpeg   | julia_roberts_earrings.jpeg         | 28
+| jennifer_aniston.jpeg   | jennifer_aniston_earrings_03.jpeg   | 30
+| jennifer_aniston.jpeg   | jennifer_garner_earrings.jpeg       | 30
+| jennifer_aniston.jpeg   | taylor_swift_earrings.jpeg          | 34
+| jennifer_aniston.jpeg   | nicole_kidman_earrings.jpeg         | 38
+
+
+
 
 #### wavelet algorithm
+
+<b>wavelet results</b>
+
+| Base Image Name         | Comparison Image Name               | Similarity Score |
+| ---------------------   | ---------------------               | ---:  
+| jennifer_aniston.jpeg   | jennifer_aniston_earrings.jpeg      | 0
+| jennifer_aniston.jpeg   | jennifer_aniston_earrings_03.jpeg   | 24
+| jennifer_aniston.jpeg   | poppy_delevingne_earrings.jpeg      | 26
+| jennifer_aniston.jpeg   | taylor_swift_earrings.jpeg          | 26
+| jennifer_aniston.jpeg   | natalie_portman_earrings.jpeg       | 26
+| jennifer_aniston.jpeg   | hilary_swank_earrings.jpeg          | 28
+| jennifer_aniston.jpeg   | jennifer_aniston_earrings_02.jpeg   | 30
+| jennifer_aniston.jpeg   | nicole_kidman_earrings.jpeg         | 34
+| jennifer_aniston.jpeg   | julia_roberts_earrings.jpeg         | 34
+| jennifer_aniston.jpeg   | jennifer_garner_earrings.jpeg       | 36
+| jennifer_aniston.jpeg   | maggie_gyllenhaal_earrings.jpg      | 38
+| jennifer_aniston.jpeg   | elizabeth hurley_earrings.jpeg      | 40
 
 The threshold for _wavelet_ similar images was set at less than 15, which did not match any additional images of Jennifer Aniston in the control set. Setting this threshold to less than 20 produced 2 false positives. Setting this threshold to less than 30 produced 3 false positives and identified another Jennifer Aniston (jennifer_anoston_earrings_03.jpeg) image. The _wavelet_ dissimilar image threshold was set at greater than 15.  Both of the other Jennifer Aniston images were in this dissimilar set. 
 </p>
