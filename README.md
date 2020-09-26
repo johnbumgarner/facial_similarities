@@ -51,35 +51,72 @@ This pixel-by-pixel comparison is useful in finding exact duplicates, but it wil
 </p>
 
 ### ImageHash Library:
-This experiment used the Python module <i>ImageHash,/i>, which was developed by Johannes Bucher.  This module has four hashing methods:
+This experiment used the Python module <i>ImageHash,</i>, which was developed by Johannes Bucher.  This module has four hashing methods:
 
-1. aHash: average hash, for each of the pixels output 1 if the pixel is bigger or equal to the average and 0 otherwise.
+1. <b>aHash:</b> average hash, for each of the pixels output 1 if the pixel is bigger or equal to the average and 0 otherwise.
 
-2. pHash: perceptive hash, does the same as aHash, but first it does a Discrete Cosine Transformation (DCT).
+2. <b>pHash:</b> perceptive hash, does the same as aHash, but first it does a Discrete Cosine Transformation (DCT).
 
-3. dHash:  gradient hash, calculate the difference for each of the pixel and compares the difference with the average differences.
+3. <b>dHash:</b>  gradient hash, calculate the difference for each of the pixel and compares the difference with the average differences.
 
-4. wavelet: wavelet hashing, works in the frequency domain as pHash but it uses Discrete Wavelet Transformation (DWT) instead of DCT.
+4. <b>wavelet:</b> wavelet hashing, works in the frequency domain as pHash but it uses Discrete Wavelet Transformation (DWT) instead of DCT.
 
-#### aHash
+#### aHash algorithm
+
+The average hash algorithm is designed to scale the input image down to 8×8 pixels and covert this smaller image to grayscale. This changes the hash from 64 pixels (64 red, 64 green, and 64 blue) to 64 total color.  Next the algorithm averages these 64 colors and computes a mean value.  Each bit of the rescaled image is evaluated against this mean value and each bit is set either above of below this value. These measurements are used to construct a hash, which will not change even if the image is scaled or the aspect ratio changes.  The hash value will not dramatically change even when someone increasing or decreasing the brightness or contrast of the image or alters its colors.  
+
+An image hash is used to determine the <i>hamming distance</i> between two hashes. The <i>Hamming distance</i> between two strings (hashes) of equal length is the number of positions at which these strings vary. In more technical terms, it is a measure of the minimum number of changes required to turn one string into another.
+
+A <i>Hamming distance</i> of 0 means that two images are identical, whereas a distance of 5 or less indicates that two images are probably similar.  If the <i>Hamming distance</i> is greater than 10 then the images are most likely different. 
 
 
-All four hashing methods were able to accurately identify the two images of Jennifer Aniston.  All the hashing methods produce similarity scores.  The threshold of these scores are adjustable.  
+
+ | Base Image Name         | Comparison Image Name              | Similarity Score |
+ | ---------------------   | ---------------------              | ---:             
+ | jennifer_aniston.jpeg   | jennifer_aniston_earrings.jpeg     | 0                
+ | jennifer_aniston.jpeg   | natalie_portman_earrings.jpeg      | 24
+ | jennifer_aniston.jpeg   | jennifer_aniston_earrings_03.jpeg  | 25
+ | jennifer_aniston.jpeg   | poppy_delevingne_earrings.jpeg     | 27
+ | jennifer_aniston.jpeg   | taylor_swift_earrings.jpeg         | 27
+ | jennifer_aniston.jpeg   | hilary_swank_earrings.jpeg         | 28
+ | jennifer_aniston.jpeg   | jennifer_aniston_earrings_02.jpeg  | 31 
+ | jennifer_aniston.jpeg   | maggie_gyllenhaal_earrings.jpg     | 31
+ | jennifer_aniston.jpeg   | nicole_kidman_earrings.jpeg        | 34
+ | jennifer_aniston.jpeg   | julia_roberts_earrings.jpeg        | 34
+ | jennifer_aniston.jpeg   | jennifer_garner_earrings.jpeg      | 35 
+ | jennifer_aniston.jpeg   | elizabeth hurley_earrings.jpeg     | 41
+
+
+
+
+
+
+
+
+
+
 
 During testing the threshold for _aHash_ similar images was set at less than 20, which successful matched another Jennifer Aniston image (jennifer_anoston_earrings_03.jpeg), but produced 2 false positives.  The _aHash_ dissimilar image threshold was set at greater than 20.  The third Jennifer Aniston (jennifer_anoston_earrings.jpeg) was in this dissimilar set.  
 
 
-
+#### dHash algorithm
 The threshold for _dHash_ similar images was set at less than 35, which successful matched another Jennifer Aniston image (jennifer_anoston_earrings.jpeg) and produced no false positives. The _dHash_ dissimilar image threshold was set at greater than 35.  The third Jennifer Aniston (jennifer_anoston_earrings_03.jpeg) was in this dissimilar set. 
 
 
-
+#### pHash algorithm
 The threshold for _pHash_ similar images was set at less than 35, which did not match any addtional images of Jennifer Aniston in the control set. Setting this threshold to less than 40 produced 2 false positives. The _pHash_ dissimilar image threshold was set at greater than 40.  Both of the other Jennifer Aniston images were in this dissimilar set. 
 
 
+#### wavelet algorithm
 
 The threshold for _wavelet_ similar images was set at less than 15, which did not match any additional images of Jennifer Aniston in the control set. Setting this threshold to less than 20 produced 2 false positives. Setting this threshold to less than 30 produced 3 false positives and identified another Jennifer Aniston (jennifer_anoston_earrings_03.jpeg) image. The _wavelet_ dissimilar image threshold was set at greater than 15.  Both of the other Jennifer Aniston images were in this dissimilar set. 
 </p>
+
+.....
+All four hashing methods were able to accurately identify the two images of Jennifer Aniston.  All the hashing methods produce similarity scores.  The threshold of these scores are adjustable.  
+....
+
+
 
 ### Numpy and Math Library:
 
