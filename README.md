@@ -69,7 +69,9 @@ An image hash is used to determine the <i>hamming distance</i> between two hashe
 
 A <i>Hamming distance</i> of 0 means that two images are identical, whereas a distance of 5 or less indicates that two images are probably similar.  If the <i>Hamming distance</i> is greater than 10 then the images are most likely different. 
 
+The average hash algorithm correctly matched the Jennifer Aniston base image to the same Jennifer Aniston comparison image within the dataset.  The algorithm did not find any similarities between the Jennifer Aniston base image and the other Jennifer Aniston comparison images within the dataset. 
 
+<b>aHash results</b>
 
  | Base Image Name         | Comparison Image Name              | Similarity Score |
  | ---------------------   | ---------------------              | ---:             
@@ -85,18 +87,6 @@ A <i>Hamming distance</i> of 0 means that two images are identical, whereas a di
  | jennifer_aniston.jpeg   | julia_roberts_earrings.jpeg        | 34
  | jennifer_aniston.jpeg   | jennifer_garner_earrings.jpeg      | 35 
  | jennifer_aniston.jpeg   | elizabeth hurley_earrings.jpeg     | 41
-
-
-
-
-
-
-
-
-
-
-
-During testing the threshold for _aHash_ similar images was set at less than 20, which successful matched another Jennifer Aniston image (jennifer_anoston_earrings_03.jpeg), but produced 2 false positives.  The _aHash_ dissimilar image threshold was set at greater than 20.  The third Jennifer Aniston (jennifer_anoston_earrings.jpeg) was in this dissimilar set.  
 
 
 #### dHash algorithm
