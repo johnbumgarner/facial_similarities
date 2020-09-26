@@ -1,8 +1,10 @@
+# being updated at the moment
+
 <p align="center">
   <img src="https://github.com/johnbumgarner/image_closeness_experiments/blob/master/graphic/facial_recognition.png"/>
 </p>
 
-# Overview Image Similarities
+# Overview Image Similarities 
 
 <p align="justify">
 
