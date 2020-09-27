@@ -98,6 +98,11 @@ The average hash algorithm correctly matched the Jennifer Aniston base image to 
  | jennifer_aniston.jpeg   | jennifer_garner_earrings.jpeg      | 35 
  | jennifer_aniston.jpeg   | elizabeth hurley_earrings.jpeg     | 41
 
+The <i>average hash</i> algorithm was able to correctly classify 3 of the 6 variations of the Jennifer Aniston comparison image  within the modified dataset to the base image of Jennifer Aniston.  All the <i>Hamming distance</i> values for these modified images were in a range between 2 and 5, which are within the threshold range for potentially similar images. The <i>average hash</i> algorithm was not able to identify a mirror image of the base image within the modified dataset.
+
+<p align="center">
+  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/ahash_histogram_variations.png", width="700" height="700"/>
+</p>
 
 #### pHash algorithm
 
@@ -135,8 +140,7 @@ The <i>perceptive hash</i> algorithm correctly matched the Jennifer Aniston base
 | jennifer_aniston.jpeg   | taylor_swift_earrings.jpeg          | 34
 | jennifer_aniston.jpeg   | nicole_kidman_earrings.jpeg         | 38
 
-
-The <i>discrete cosine transform</i> approached was able to correctly classify the 5 of the 6 variations of the Jennifer Aniston comparison image to the base image of Jennifer Aniston.  All the <i>Hamming distance</i> values for these modified images were in a range between 2 and 8, which are within the threshold range for potentially similar images. 
+The <i>discrete cosine transform</i> approached was able to correctly classify the 5 of the 6 variations of the Jennifer Aniston comparison image  within the modified dataset to the base image of Jennifer Aniston.  All the <i>Hamming distance</i> values for these modified images were in a range between 2 and 8, which are within the threshold range for potentially similar images. The <i>perceptive hash</i> algorithm was not able to identify a mirror image of the base image within the modified dataset.
 
 <p align="center">
   <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/phash_histogram_variations.png", width="700" height="700"/>
@@ -178,7 +182,6 @@ The <i>difference hash</i> algorithm correctly matched the Jennifer Aniston base
 | jennifer_aniston.jpeg   |  jennifer_garner_earrings.jpeg      | 32
 | jennifer_aniston.jpeg   |  jennifer_aniston_earrings_03.jpeg  | 35
 
-
 #### wavelet algorithm
 
 The <i>wavelet hash</i> algorithm is similar to the <i>perceptive hash</i> algorithm, because it operates within the frequency domain.  The main difference is that the <i>wavelet hash</i> algorithm uses <i>discrete wavelet transform</i>(DWT), instead of <i>discrete cosine transform</i> like the <i>perceptive hash</i> algorithm does. In numerical <i>analysis</i> and <i>functional analysis</i>, a <i>discrete wavelet transform</i> is any wavelet transform for which the wavelets are discretely sampled. The <i>wavelet hash</i> algorithm used the <i>Haar wavelet</i>, which is a sequence of rescaled "square-shaped" functions which together form a wavelet family.
@@ -210,15 +213,11 @@ hash0 = imagehash.whash(Image.open(base_image) mode=w)
 
 The <i>wavelet hash</i> algorithm correctly matched the Jennifer Aniston base image to the same Jennifer Aniston comparison image within the dataset.  If the computational score threshold was set to less than 15, then the other Jennifer Aniston's images within the dataset were not considered similar images.   
 
-The <i>discrete wavelet transform</i> approached was able to correctly classify the 6 variations of the Jennifer Aniston comparison image to the base image of Jennifer Aniston.  All the <i>Hamming distance</i> values for these modified images were in a range between 2 and 12, which are within the threshold range for potentially similar images.  The <i>wavelet hash</i> algorithm was able to identify a mirror image of the base image, but the computational score was 16, which was slightly outside the threshold of 15 or less. 
+The <i>discrete wavelet transform</i> approached was able to correctly classify the 6 variations of the Jennifer Aniston comparison image within the modified dataset to the base image of Jennifer Aniston.  All the computational values for these modified images were in a range between 2 and 12, which were all within the threshold range for potentially similar images.  The <i>wavelet hash</i> algorithm was also able to identify a mirror image of the base image, but the computational score was 16, which was slightly outside the threshold of 15 or less.
 
 <p align="center">
   <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/whash_histogram_variations.png", width="700" height="700"/>
 </p>
-
-
-
-
 
 <b>wavelet results</b>
 
@@ -236,9 +235,10 @@ The <i>discrete wavelet transform</i> approached was able to correctly classify 
 | jennifer_aniston.jpeg   | jennifer_garner_earrings.jpeg       | 36
 | jennifer_aniston.jpeg   | maggie_gyllenhaal_earrings.jpg      | 38
 | jennifer_aniston.jpeg   | elizabeth hurley_earrings.jpeg      | 40
-
-The threshold for _wavelet_ similar images was set at less than 15, which did not match any additional images of Jennifer Aniston in the control set. Setting this threshold to less than 20 produced 2 false positives. Setting this threshold to less than 30 produced 3 false positives and identified another Jennifer Aniston (jennifer_anoston_earrings_03.jpeg) image. The _wavelet_ dissimilar image threshold was set at greater than 15.  Both of the other Jennifer Aniston images were in this dissimilar set. 
 </p>
+
+
+
 
 .....
 All four hashing methods were able to accurately identify the two images of Jennifer Aniston.  All the hashing methods produce similarity scores.  The threshold of these scores are adjustable.  
