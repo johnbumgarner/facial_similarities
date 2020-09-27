@@ -213,12 +213,6 @@ hash0 = imagehash.whash(Image.open(base_image) mode=w)
 
 The <i>wavelet hash</i> algorithm correctly matched the Jennifer Aniston base image to the same Jennifer Aniston comparison image within the dataset.  If the computational score threshold was set to less than 15, then the other Jennifer Aniston's images within the dataset were not considered similar images.   
 
-The <i>discrete wavelet transform</i> approached was able to correctly classify the 6 variations of the Jennifer Aniston comparison image within the modified dataset to the base image of Jennifer Aniston.  All the computational values for these modified images were in a range between 2 and 12, which were all within the threshold range for potentially similar images.  The <i>wavelet hash</i> algorithm was also able to identify a mirror image of the base image, but the computational score was 16, which was slightly outside the threshold of 15 or less.
-
-<p align="center">
-  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/whash_histogram_variations.png", width="700" height="700"/>
-</p>
-
 <b>wavelet results</b>
 
 | Base Image Name         | Comparison Image Name               | Similarity Score |
@@ -235,6 +229,13 @@ The <i>discrete wavelet transform</i> approached was able to correctly classify 
 | jennifer_aniston.jpeg   | jennifer_garner_earrings.jpeg       | 36
 | jennifer_aniston.jpeg   | maggie_gyllenhaal_earrings.jpg      | 38
 | jennifer_aniston.jpeg   | elizabeth hurley_earrings.jpeg      | 40
+
+The <i>discrete wavelet transform</i> approached was able to correctly classify the 6 variations of the Jennifer Aniston comparison image within the modified dataset to the base image of Jennifer Aniston.  All the computational values for these modified images were in a range between 2 and 12, which were all within the threshold range for potentially similar images.  The <i>wavelet hash</i> algorithm was also able to identify a mirror image of the base image, but the computational score was 16, which was slightly outside the threshold of 15 or less.
+
+<p align="center">
+  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/whash_histogram_variations.png", width="700" height="700"/>
+</p>
+
 </p>
 
 
