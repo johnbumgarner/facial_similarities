@@ -59,13 +59,13 @@ This experiment used the Python module <i>ImageHash,</i>, which was developed by
 
 2. <b>pHash:</b> perceptive hash, does the same as aHash, but first it does a Discrete Cosine Transformation (DCT).
 
-3. <b>dHash:</b>  gradient hash, calculate the difference for each of the pixel and compares the difference with the average differences.
+3. <b>dHash:</b> difference hash, calculate the difference for each of the pixel and compares the difference with the average differences.
 
 4. <b>wavelet:</b> wavelet hashing, works in the frequency domain as pHash but it uses Discrete Wavelet Transformation (DWT) instead of DCT.
 
 #### aHash algorithm
 
-The average hash algorithm is designed to scale the input image down to 8×8 pixels and covert this smaller image to grayscale. This changes the hash from 64 pixels (64 red, 64 green, and 64 blue) to 64 total color.  Next the algorithm averages these 64 colors and computes a mean value.  Each bit of the rescaled image is evaluated against this mean value and each bit is set either above of below this value. These measurements are used to construct a hash, which will not change even if the image is scaled or the aspect ratio changes.  The hash value will not dramatically change even when someone increasing or decreasing the brightness or contrast of the image or alters its colors.  
+The <i>average hash</i> algorithm is designed to scale the input image down to 8×8 pixels and covert this smaller image to grayscale. This changes the hash from 64 pixels (64 red, 64 green, and 64 blue) to 64 total color.  Next the algorithm averages these 64 colors and computes a mean value.  Each bit of the rescaled image is evaluated against this mean value and each bit is set either above of below this value. These measurements are used to construct a hash, which will not change even if the image is scaled or the aspect ratio changes.  The hash value will not dramatically change even when someone increasing or decreasing the brightness or contrast of the image or alters its colors.  
 
 An image hash is used to determine the <i>hamming distance</i> between two hashes. The <i>Hamming distance</i> between two strings (hashes) of equal length is the number of positions at which these strings vary. In more technical terms, it is a measure of the minimum number of changes required to turn one string into another.
 
@@ -91,30 +91,16 @@ The average hash algorithm correctly matched the Jennifer Aniston base image to 
  | jennifer_aniston.jpeg   | elizabeth hurley_earrings.jpeg     | 41
 
 
-#### dHash algorithm
-
-The threshold for _dHash_ similar images was set at less than 35, which successful matched another Jennifer Aniston image (jennifer_anoston_earrings.jpeg) and produced no false positives. The _dHash_ dissimilar image threshold was set at greater than 35.  The third Jennifer Aniston (jennifer_anoston_earrings_03.jpeg) was in this dissimilar set. 
-
-<b>dHash results</b>
-
-| Base Image Name         | Comparison Image Name               | Similarity Score |
-| ---------------------   | ---------------------               | ---:  
-| jennifer_aniston.jpeg   |  jennifer_aniston_earrings.jpeg     | 0
-| jennifer_aniston.jpeg   |  hilary_swank_earrings.jpeg         | 18
-| jennifer_aniston.jpeg   |  poppy_delevingne_earrings.jpeg     | 21
-| jennifer_aniston.jpeg   |  jennifer_aniston_earrings_02.jpeg  | 22
-| jennifer_aniston.jpeg   |  taylor_swift_earrings.jpeg         | 25
-| jennifer_aniston.jpeg   |  julia_roberts_earrings.jpeg        | 26
-| jennifer_aniston.jpeg   |  natalie_portman_earrings.jpeg      | 27
-| jennifer_aniston.jpeg   |  elizabeth hurley_earrings.jpeg     | 28
-| jennifer_aniston.jpeg   |  maggie_gyllenhaal_earrings.jpg     | 28
-| jennifer_aniston.jpeg   |  nicole_kidman_earrings.jpeg        | 32
-| jennifer_aniston.jpeg   |  jennifer_garner_earrings.jpeg      | 32
-| jennifer_aniston.jpeg   |  jennifer_aniston_earrings_03.jpeg  | 35
-
-
 #### pHash algorithm
-The threshold for _pHash_ similar images was set at less than 35, which did not match any addtional images of Jennifer Aniston in the control set. Setting this threshold to less than 40 produced 2 false positives. The _pHash_ dissimilar image threshold was set at greater than 40.  Both of the other Jennifer Aniston images were in this dissimilar set. 
+
+The core difference between the <i>average hash</i> algorithm and the <i>perceptive hash</i> algorithm is how the latter handles either gamma correction or color histogram modifications applied to an image.  The <i>average hash</i> algorithm will generate false-misses when slight color variations have been applied to the 
+a comparison image. The <i>perceptive hash</i> algorithm handles these variations by using <i>discrete cosine transform</i>(DCT), which expresses a finite sequence of data points in terms of a sum of cosine functions oscillating at different frequencies.
+
+The <i>perceptive hash</i> algorithm is designed to scale the input image down to 32×32 pixels and covert this smaller image to grayscale. Next the algorithm uses DCT to separates the image into a collection of frequencies and scalars. After this is done the algorithm extracts the top-left 8x8, which represent the lowest frequencies in the image.   The 64 bits of this 8x8 will be set to a binary value of 0 or 1 depending on whether the value is above or below the average value. The resulting hash value will not dramatically change even if a comparison image has had gamma or color histogram adjustments.
+
+A <i>Hamming distance</i> value of 0 means that two images are identical, whereas a distance of 10 or less indicates that two images are potentially similar and a value greater than 10 suggests that the images are most likely different. 
+
+The <i>perceptive hash</i> algorithm correctly matched the Jennifer Aniston base image to the same Jennifer Aniston comparison image within the dataset.  The algorithm did not find any similarities between the Jennifer Aniston base image and the other 2 Jennifer Aniston comparison images within the dataset. 
 
 <b>pHash results</b>
 
@@ -134,6 +120,39 @@ The threshold for _pHash_ similar images was set at less than 35, which did not 
 | jennifer_aniston.jpeg   | nicole_kidman_earrings.jpeg         | 38
 
 
+The <i>discrete cosine transform</i> approached was able to correctly classify the 6 variations of the Jennifer Aniston comparison image to the base image of Jennifer Aniston.  All the <i>Hamming distance</i> values for these modified images were in a range between 2 and 8, which are within the threshold range for potentially similar images. 
+
+<p align="center">
+  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/histogram_variations.png", width="700" height="700"/>
+</p>
+
+
+#### dHash algorithm
+
+The <i>difference hash</i> algorithm is nearly identical to the <i>average hash</i> algorithm.  dhash is designed to tracks gradients, while aHash focuses on average values and pHash evaluates frequency patterns. dHash scales the input image down to an odd aspect ratio of 9x8. This aspect ratio has 72 pixels, which is slightly more then aHash's 64 pixels.  dHash coverts this smaller image to grayscale, which changes the hash from 72 pixels (72 red, 72 green, and 72 blue) to 72 total colors.  
+
+After this conversion the dHash algorithm will measure the differences between adjacent pixels, thus identifying the relative gradient direction of each pixel on a row to row basis.  After all this computation the 8 rows of 8 differences becomes 64 bits.  Each of these bits is simply set based on whether the left pixel is brighter than the right pixel.  These measurements will match any similar image regardless of its aspect ratio prior to dHash shrinking the image.  
+
+A <i>Hamming distance</i> value of 0 means that two images are identical, whereas a distance of 10 or less indicates that two images are potentially similar and a value greater than 10 suggests that the images are most likely different. 
+
+The <i>difference hash</i> algorithm correctly matched the Jennifer Aniston base image to the same Jennifer Aniston comparison image within the dataset.  The algorithm did not find any similarities between the Jennifer Aniston base image and the other 2 Jennifer Aniston comparison images within the dataset. 
+
+<b>dHash results</b>
+
+| Base Image Name         | Comparison Image Name               | Similarity Score |
+| ---------------------   | ---------------------               | ---:  
+| jennifer_aniston.jpeg   |  jennifer_aniston_earrings.jpeg     | 0
+| jennifer_aniston.jpeg   |  hilary_swank_earrings.jpeg         | 18
+| jennifer_aniston.jpeg   |  poppy_delevingne_earrings.jpeg     | 21
+| jennifer_aniston.jpeg   |  jennifer_aniston_earrings_02.jpeg  | 22
+| jennifer_aniston.jpeg   |  taylor_swift_earrings.jpeg         | 25
+| jennifer_aniston.jpeg   |  julia_roberts_earrings.jpeg        | 26
+| jennifer_aniston.jpeg   |  natalie_portman_earrings.jpeg      | 27
+| jennifer_aniston.jpeg   |  elizabeth hurley_earrings.jpeg     | 28
+| jennifer_aniston.jpeg   |  maggie_gyllenhaal_earrings.jpg     | 28
+| jennifer_aniston.jpeg   |  nicole_kidman_earrings.jpeg        | 32
+| jennifer_aniston.jpeg   |  jennifer_garner_earrings.jpeg      | 32
+| jennifer_aniston.jpeg   |  jennifer_aniston_earrings_03.jpeg  | 35
 
 
 #### wavelet algorithm
