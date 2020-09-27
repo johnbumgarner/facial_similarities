@@ -71,6 +71,14 @@ An image hash is used to determine the <i>hamming distance</i> between two hashe
 
 A <i>Hamming distance</i> of 0 means that two images are identical, whereas a distance of 5 or less indicates that two images are probably similar.  If the <i>Hamming distance</i> is greater than 10 then the images are most likely different. 
 
+The basic usage of the <i>average hash</i> algorithm within <i>ImageHash</i> is:
+
+```python
+hash0 = imagehash.ahash(Image.open(base_image))
+hash1 = imagehash.ahash(Image.open(comparison_image))
+computational_score = (hash0 - hash1)
+```
+
 The average hash algorithm correctly matched the Jennifer Aniston base image to the same Jennifer Aniston comparison image within the dataset.  The algorithm did not find any similarities between the Jennifer Aniston base image and the other Jennifer Aniston comparison images within the dataset. 
 
 <b>aHash results</b>
@@ -100,6 +108,14 @@ The <i>perceptive hash</i> algorithm is designed to scale the input image down t
 
 A <i>Hamming distance</i> value of 0 means that two images are identical, whereas a distance of 10 or less indicates that two images are potentially similar and a value greater than 10 suggests that the images are most likely different. 
 
+The basic usage of the <i>perceptive hash</i> algorithm within <i>ImageHash</i> is:
+
+```python
+hash0 = imagehash.phash(Image.open(base_image))
+hash1 = imagehash.phash(Image.open(comparison_image))
+computational_score = (hash0 - hash1)
+```
+
 The <i>perceptive hash</i> algorithm correctly matched the Jennifer Aniston base image to the same Jennifer Aniston comparison image within the dataset.  The algorithm did not find any similarities between the Jennifer Aniston base image and the other 2 Jennifer Aniston comparison images within the dataset. 
 
 <b>pHash results</b>
@@ -120,10 +136,10 @@ The <i>perceptive hash</i> algorithm correctly matched the Jennifer Aniston base
 | jennifer_aniston.jpeg   | nicole_kidman_earrings.jpeg         | 38
 
 
-The <i>discrete cosine transform</i> approached was able to correctly classify the 6 variations of the Jennifer Aniston comparison image to the base image of Jennifer Aniston.  All the <i>Hamming distance</i> values for these modified images were in a range between 2 and 8, which are within the threshold range for potentially similar images. 
+The <i>discrete cosine transform</i> approached was able to correctly classify the 5 of the 6 variations of the Jennifer Aniston comparison image to the base image of Jennifer Aniston.  All the <i>Hamming distance</i> values for these modified images were in a range between 2 and 8, which are within the threshold range for potentially similar images. 
 
 <p align="center">
-  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/histogram_variations.png", width="700" height="700"/>
+  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/phash_histogram_variations.png", width="700" height="700"/>
 </p>
 
 
@@ -134,6 +150,14 @@ The <i>difference hash</i> algorithm is nearly identical to the <i>average hash<
 After this conversion the dHash algorithm will measure the differences between adjacent pixels, thus identifying the relative gradient direction of each pixel on a row to row basis.  After all this computation the 8 rows of 8 differences becomes 64 bits.  Each of these bits is simply set based on whether the left pixel is brighter than the right pixel.  These measurements will match any similar image regardless of its aspect ratio prior to dHash shrinking the image.  
 
 A <i>Hamming distance</i> value of 0 means that two images are identical, whereas a distance of 10 or less indicates that two images are potentially similar and a value greater than 10 suggests that the images are most likely different. 
+
+The basic usage of the <i>difference hash</i> algorithm within <i>ImageHash</i> is:
+
+```python
+hash0 = imagehash.dhash(Image.open(base_image))
+hash1 = imagehash.dhash(Image.open(comparison_image))
+computational_score = (hash0 - hash1)
+```
 
 The <i>difference hash</i> algorithm correctly matched the Jennifer Aniston base image to the same Jennifer Aniston comparison image within the dataset.  The algorithm did not find any similarities between the Jennifer Aniston base image and the other 2 Jennifer Aniston comparison images within the dataset. 
 
@@ -156,6 +180,45 @@ The <i>difference hash</i> algorithm correctly matched the Jennifer Aniston base
 
 
 #### wavelet algorithm
+
+The <i>wavelet hash</i> algorithm is similar to the <i>perceptive hash</i> algorithm, because it operates within the frequency domain.  The main difference is that the <i>wavelet hash</i> algorithm uses <i>discrete wavelet transform</i>(DWT), instead of <i>discrete cosine transform</i> like the <i>perceptive hash</i> algorithm does. In numerical <i>analysis</i> and <i>functional analysis</i>, a <i>discrete wavelet transform</i> is any wavelet transform for which the wavelets are discretely sampled. The <i>wavelet hash</i> algorithm used the <i>Haar wavelet</i>, which is a sequence of rescaled "square-shaped" functions which together form a wavelet family.
+
+The basic usage of the <i>wavelet hash</i> algorithm within <i>ImageHash</i> is:
+
+```python
+hash0 = imagehash.whash(Image.open(base_image))
+hash1 = imagehash.whash(Image.open(comparison_image))
+computational_score = (hash0 - hash1)
+```
+The <i>wavelet hash</i> algorithm has a mode parameter, which allows the wavelet family to be changed.  
+
+```python
+imagehash.whash(Image.open(image, hash_size = 8, image_scale = None, mode = 'haar', remove_max_haar_ll = True))
+```
+These wavelet families can be changed by installing the Python module <i>pywavelets</i>.
+
+```python
+import pywt
+pywt.families()
+['haar', 'db', 'sym', 'coif', 'bior', 'rbio', 'dmey', 'gaus', 'mexh', 'morl', 'cgau', 'shan', 'fbsp', 'cmor']
+
+# db3 is a family member of db
+w = pywt.Wavelet('db3')
+
+hash0 = imagehash.whash(Image.open(base_image) mode=w)
+```
+
+The <i>wavelet hash</i> algorithm correctly matched the Jennifer Aniston base image to the same Jennifer Aniston comparison image within the dataset.  If the computational score threshold was set to less than 15, then the other Jennifer Aniston's images within the dataset were not considered similar images.   
+
+The <i>discrete wavelet transform</i> approached was able to correctly classify the 6 variations of the Jennifer Aniston comparison image to the base image of Jennifer Aniston.  All the <i>Hamming distance</i> values for these modified images were in a range between 2 and 12, which are within the threshold range for potentially similar images.  The <i>wavelet hash</i> algorithm was able to identify a mirror image of the base image, but the computational score was 16, which was slightly outside the threshold of 15 or less. 
+
+<p align="center">
+  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/whash_histogram_variations.png", width="700" height="700"/>
+</p>
+
+
+
+
 
 <b>wavelet results</b>
 
