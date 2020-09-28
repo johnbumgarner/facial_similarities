@@ -143,7 +143,7 @@ The <i>perceptive hash</i> algorithm correctly matched the Jennifer Aniston base
 The <i>discrete cosine transform</i> approached was able to correctly classify the 5 of the 6 variations of the Jennifer Aniston comparison image  within the modified dataset to the base image of Jennifer Aniston.  All the <i>Hamming distance</i> values for these modified images were in a range between 2 and 8, which are within the threshold range for potentially similar images. The <i>perceptive hash</i> algorithm was not able to identify a mirror image of the base image within the modified dataset.
 
 <p align="center">
-  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/phash_histogram_variations.png", width="700" height="700"/>
+  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/phash_histogram_variations.png", width="500" height="500"/>
 </p>
 
 
@@ -233,18 +233,10 @@ The <i>wavelet hash</i> algorithm correctly matched the Jennifer Aniston base im
 The <i>discrete wavelet transform</i> approached was able to correctly classify the 6 variations of the Jennifer Aniston comparison image within the modified dataset to the base image of Jennifer Aniston.  All the computational values for these modified images were in a range between 2 and 12, which were all within the threshold range for potentially similar images.  The <i>wavelet hash</i> algorithm was also able to identify a mirror image of the base image, but the computational score was 16, which was slightly outside the threshold of 15 or less.
 
 <p align="center">
-  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/whash_histogram_variations.png", width="700" height="700"/>
+  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/whash_histogram_variations.png", width="500" height="500"/>
 </p>
 
 </p>
-
-
-
-
-.....
-All four hashing methods were able to accurately identify the two images of Jennifer Aniston.  All the hashing methods produce similarity scores.  The threshold of these scores are adjustable.  
-....
-
 
 
 ### Numpy and Math Library:
