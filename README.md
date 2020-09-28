@@ -98,7 +98,7 @@ The average hash algorithm correctly matched the Jennifer Aniston base image to 
  | jennifer_aniston.jpeg   | jennifer_garner_earrings.jpeg      | 35 
  | jennifer_aniston.jpeg   | elizabeth hurley_earrings.jpeg     | 41
 
-The <i>average hash</i> algorithm was able to correctly classify 3 of the 6 variations of the Jennifer Aniston comparison image  within the modified dataset to the base image of Jennifer Aniston.  All the <i>Hamming distance</i> values for these modified images were in a range between 2 and 5, which are within the threshold range for potentially similar images. The <i>average hash</i> algorithm was not able to identify a mirror image of the base image within the modified dataset.
+The <i>average hash</i> algorithm was able to correctly classify 3 of the 6 variations of the Jennifer Aniston comparison image within the modified dataset to the base image of Jennifer Aniston.  All the <i>Hamming distance</i> values for these modified images were in a range between 2 and 5, which are within the threshold range for potentially similar images. The <i>average hash</i> algorithm was not able to identify a mirror image of the base image within the modified dataset.
 
 <p align="center">
   <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/ahash_histogram_variations.png", width="500" height="500"/>
@@ -107,7 +107,7 @@ The <i>average hash</i> algorithm was able to correctly classify 3 of the 6 vari
 #### pHash algorithm
 
 The core difference between the <i>average hash</i> algorithm and the <i>perceptive hash</i> algorithm is how the latter handles either gamma correction or color histogram modifications applied to an image.  The <i>average hash</i> algorithm will generate false-misses when slight color variations have been applied to the 
-a comparison image. The <i>perceptive hash</i> algorithm handles these variations by using <i>discrete cosine transform</i>(DCT), which expresses a finite sequence of data points in terms of a sum of cosine functions oscillating at different frequencies.
+a comparison image. The <i>perceptive hash</i> algorithm handles these variations by using <i>discrete cosine transform</i> (DCT), which expresses a finite sequence of data points in terms of a sum of cosine functions oscillating at different frequencies.
 
 The <i>perceptive hash</i> algorithm is designed to scale the input image down to 32×32 pixels and covert this smaller image to grayscale. Next the algorithm uses DCT to separates the image into a collection of frequencies and scalars. After this is done the algorithm extracts the top-left 8x8, which represent the lowest frequencies in the image.   The 64 bits of this 8x8 will be set to a binary value of 0 or 1 depending on whether the value is above or below the average value. The resulting hash value will not dramatically change even if a comparison image has had gamma or color histogram adjustments.
 
@@ -181,6 +181,13 @@ The <i>difference hash</i> algorithm correctly matched the Jennifer Aniston base
 | jennifer_aniston.jpeg   |  nicole_kidman_earrings.jpeg        | 32
 | jennifer_aniston.jpeg   |  jennifer_garner_earrings.jpeg      | 32
 | jennifer_aniston.jpeg   |  jennifer_aniston_earrings_03.jpeg  | 35
+
+
+The <i>difference hash</i> algorithm was able to correctly classify 4 of the 6 variations of the Jennifer Aniston comparison image within the modified dataset to the base image of Jennifer Aniston. The image with the red border had a similarity score of O, which is considered an identical match.  The other 3 images similarity scores in a range between 1 and 5, which are within the threshold range for potentially similar images. The <i>difference hash</i> algorithm was not able to identify a mirror image of the base image within the modified dataset.
+
+<p align="center">
+  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/dhash_histogram_variations.png", width="500" height="500"/>
+</p>
 
 #### wavelet algorithm
 
