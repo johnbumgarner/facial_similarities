@@ -1,5 +1,3 @@
-# being updated at the moment
-
 <p align="center">
   <img src="https://github.com/johnbumgarner/image_closeness_experiments/blob/master/graphic/facial_recognition.png"/>
 </p>
@@ -257,79 +255,16 @@ In testing both methods were ables to successfully identify the target image of 
 </p>
 
 
+### Conclusions:
 
-## Facial Detection/Recognition/Prediction Experiments
+TO DO
 
-### Experiment 1:
-
-<p align="justify">
-This experiment used the Python module cv2. The Python package is opencv-python.  This opencv-python package is the Open Source Computer Vision (OpenCV), which is a computer vision and machine learning software library. Computer vision and digital image processing are currently being widely applied in face recognition, criminal investigation, signature pattern detection in banking, digital documents analysis and smart tag based vehicles for recognition. 
-</p>
-
-<p align="justify">
-The LBPH face recognition algorithm was used in this experiment. Local Binary Pattern (LBP) is a simple and efficient texture operator which labels the pixels of an image by thresholding the neighborhood of each pixel and considers the result as a binary number. The experiment also uses the Haar Cascade, which is a machine learning object detection algorithm used to identify objects in an image or video and based on the concept of features.
-</p>
-
-The Haar Cascade classifiers used in this experiment were:
-
-1. haarcascade_frontalface_default.xml 
-2. haarcascade_eye.xml
-3. haarcascade_mcs_nose.xml
-4. haarcascade_smile.xml
-
-<p align="justify">
-During testing it was noted that all these Haar Cascade classifiers were temperamental and required continually tuning of the parameters scaleFactor and minNeighbors used by detectMultiScale.  The angle of the faces within the images were also a key factor when detecting facial features. Images containing direct frontal faces produced the best results as shown below.
-</p>
-
-<p align="center"> <br>
-<img src="https://github.com/johnbumgarner/image_simarility_experiments/blob/master/haar_cascade_features.jpg">
-</p>
-
-### Experiment 2:
-
-<p align="justify">
-This experiment also uses the Python module cv2 and the LBPH face recognition algorithm.  The previous experiment was designed to do some base level facial prediction. In this experiment a set of 74 images of female actresses was used to create the facial prediction training data, the associated labels and identification numbers. 
-</p>
-
-<p align="justify">
-The predict feature of LBPHFaceRecognizer was utilized in this experiment. The prediction of the LBPH face recognition algorithm will analyze an image containing face and attempt to identify the face contain in the image against images within the training data. If a probable match is found within the training data then the person name and the confidence score will be overlaid on the image displayed as shown below:
-</p>
-
-<p align="center"><br>
-<img src="https://github.com/johnbumgarner/image_similarity_experiments/blob/master/aishwarya_rai_confidence_score.jpg">
-</p>
-
-<p align="justify">
-The algorithm was able to successfully predict that an image contained in the training data matched an image that was used in creating the training data. A confidence_score of '0' is a 100% match. The success rate was less accurate for images not used in the training data. 
-</p>
-
-### Experiment 3:
-
-<p align="justify">
-Like the previous experiment this one also uses the Python module cv2 and the LBPH face recognition algorithm, but this experiment includes horizontal image flipping. This experiment also used the same set of 74 images of female actresses. These images were used to create the facial prediction training data, the associated labels and identification numbers.
-</p>
-
-<p align="justify">
-The predict feature of LBPHFaceRecognizer was also utilized in this experiment. The prediction of the LBPH face recognition algorithm will analyze an image containing face and attempt to identify the face contain in the image against images (original and horizontal flipped) within the training data. If a probable match is found within the training data then the person name and the confidence score will be overlaid on the image displayed as shown below:
-</p>
-
-<p align="center"><br>
-<img src="https://github.com/johnbumgarner/image_similarity_experiments/blob/master/flip_jennifer_aniston_confidence_score.jpg">
-</p>
-
-<p align="justify">
-The algorithm was able to successfully predict that an image contained in the training data matched either an original or horizontal image that was used in creating the training data. The success rate was again less accurate for images not used in the training data. 
-</p>
 
 ### Notes:
 
 _The code within this repository is **not** production ready. It was **strictly** designed for experimental testing purposes only._
 
 
-####
-<p align="center"><br>
-<img src="https://github.com/johnbumgarner/image_simarility_experiments/blob/master/females_with_earrings_test_images.jpg">
-</p>
 
 
 
