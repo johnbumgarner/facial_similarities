@@ -243,16 +243,60 @@ The <i>discrete wavelet transform</i> approached was able to correctly classify 
 
 </p>
 
-
 ### Numpy and Math Library:
 
+#### Structural Similarity Index (SSIM)
+
 <p align="justify">
-This experiment used the Python modules Numpy and Math. Numpy is one of fundamental packages for scientific computing with Python and Math provides access to various access mathematical functions. This experiment focused on Structural Similarity Index (SSIM), which is the a method for measuring the similarity between two images and Hamming distance, which determines how similar two images are.
-</p>
+ Image similarity can also be accomplished using the Python modules <i>Numpy</i> and <i>Math</i>.  These modules can be used to determine the Structural Similarity Index (SSIM), which is a perceptual metric for measuring the similarity between two images.  These measurements are most useful when determine the graphically similarity between two identical images that have subtle differences to the human eye. The latter comparison will be examined in another repository.  The current 
+SSIM examinations will only focus on the similarity or dissimilar between two images, which is like the previous tests using <i>Pillow</i> or <i>ImageHash</i>.
+
+
+<b>Structural Similarity Index results</b>
+
+| Base Image Name         | Comparison Image Name               | Similarity Score |
+| ---------------------   | ---------------------               | ---:  
+| jennifer_aniston.jpeg   | jennifer_aniston_earrings.jpeg      | 100.00
+| jennifer_aniston.jpeg   | jennifer_aniston_earrings_02.jpeg   | 30.14
+| jennifer_aniston.jpeg   | taylor_swift_earrings.jpeg          | 25.84
+| jennifer_aniston.jpeg   | julia_roberts_earrings.jpeg         | 22.23
+| jennifer_aniston.jpeg   | poppy_delevingne_earrings.jpeg      | 21.22
+| jennifer_aniston.jpeg   | maggie_gyllenhaal_earrings.jpg      | 20.58
+| jennifer_aniston.jpeg   | elizabeth hurley_earrings.jpeg      | 19.69
+| jennifer_aniston.jpeg   | jennifer_garner_earrings.jpeg       | 19.25
+| jennifer_aniston.jpeg   | hilary_swank_earrings.jpeg          | 17.16
+| jennifer_aniston.jpeg   | natalie_portman_earrings.jpeg       | 13.78
+| jennifer_aniston.jpeg   | jennifer_aniston_earrings_03.jpeg   | 13.50
+| jennifer_aniston.jpeg   | nicole_kidman_earrings.jpeg         | 13.27
+  
+
+#### Hamming Distance
+
+
+<b>Hamming distance results</b>
+
+| Base Image Name         | Comparison Image Name               | Similarity Score |
+| ---------------------   | ---------------------               | ---:  
+| jennifer_aniston.jpeg   | jennifer_aniston_earrings.jpeg      | 100.00
+| jennifer_aniston.jpeg   | poppy_delevingne_earrings.jpeg      | 62.54
+| jennifer_aniston.jpeg   | jennifer_aniston_earrings_02.jpeg   | 61.81
+| jennifer_aniston.jpeg   | taylor_swift_earrings.jpeg          | 59.37
+| jennifer_aniston.jpeg   | julia_roberts_earrings.jpeg         | 59.22
+| jennifer_aniston.jpeg   | jennifer_garner_earrings.jpeg       | 58.89
+| jennifer_aniston.jpeg   | elizabeth hurley_earrings.jpeg      | 58.53
+| jennifer_aniston.jpeg   | maggie_gyllenhaal_earrings.jpg      | 57.21
+| jennifer_aniston.jpeg   | jennifer_aniston_earrings_03.jpeg   | 57.12
+| jennifer_aniston.jpeg   | hilary_swank_earrings.jpeg          | 56.42
+| jennifer_aniston.jpeg   | natalie_portman_earrings.jpeg       | 55.81
+| jennifer_aniston.jpeg   | nicole_kidman_earrings.jpeg         | 55.75
+
+
+
 
 <p align="justify">
 In testing both methods were ables to successfully identify the target image of Jennifer Aniston from the control set of images. As in the previous experiments the SSIM and Hamming measurement generated a computational score based on similarity and distance. Establishing a computational score threshold using these two measurement methods was highly problematic, because it produced a considerable amount of false positives.
 </p>
+
 
 
 ### Conclusions:
