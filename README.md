@@ -248,8 +248,9 @@ The <i>discrete wavelet transform</i> approached was able to correctly classify 
 #### Structural Similarity Index (SSIM)
 
 <p align="justify">
- Image similarity can also be accomplished using the Python modules <i>Numpy</i> and <i>Math</i>.  These modules can be used to determine the Structural Similarity Index (SSIM), which is a perceptual metric for measuring the similarity between two images.  These measurements are most useful when determine the graphically similarity between two identical images that have subtle differences to the human eye. The latter comparison will be examined in another repository.  The current 
+Image similarity can also be accomplished using the Python modules <i>Numpy</i> and <i>Math</i>.  These modules can be used to determine the Structural Similarity Index (SSIM), which is a perceptual metric for measuring the similarity between two images.  These measurements are most useful when determine the graphically similarity between two identical images that have subtle differences to the human eye. The latter comparison will be examined in another repository.  The current 
 SSIM examinations will only focus on the similarity or dissimilar between two images, which is like the previous tests using <i>Pillow</i> or <i>ImageHash</i>.
+
 
 
 <b>Structural Similarity Index results</b>
@@ -272,6 +273,7 @@ SSIM examinations will only focus on the similarity or dissimilar between two im
 
 #### Hamming Distance
 
+The Python modules <i>Numpy</i> and <i>Math</i> can also be used to determine the <i>hamming distance</i> between two images. <i>Hamming distance</i> was discussed when using <i>ImageHash</i>.
 
 <b>Hamming distance results</b>
 
