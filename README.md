@@ -6,7 +6,7 @@
 
 <p align="justify">
 
-Most humans can look at two photos and quickly determine if the images are either similarity or dissimilarity in nature. Computers can be programmed to perform a similar task, but the results can vary, because of multiple factors(e.g., lighting conditions, perspectives) that humans can instinctively do automatically.  Humans have little difficulty seeing the differences between a photo of a rose and a painting of rose, but a computer will have some issues.  
+Most humans can look at two photos and quickly determine if the images are either similarity or dissimilarity in nature. Computers can be programmed to perform a similar task, but the results can vary, because of multiple factors(e.g., lighting conditions, perspectives) that humans can instinctively do automatically.  Humans have little difficulty seeing the differences between photos of two individuals with similar characteristics, but a computer will have some issues.  
 
 There are numerous use cases for image similarities technologies. These use cases range from duplicate image detection to domain specific image clustering. Identifying duplicate images in Apple Photo is a common use case for many of us dealing with a large digital image library. Some of us have likey used Google’s Reverse Image Search to look for a specific photo that we want to know more about. Google will scour its massive database for images similar to the one used in your query. 
 
@@ -272,7 +272,7 @@ SSIM examinations will only focus on the similarity or dissimilar between two im
   
 
 #### Hamming Distance
-
+<p align="justify">
 The Python modules <i>Numpy</i> and <i>Math</i> can also be used to determine the <i>hamming distance</i> between two images. <i>Hamming distance</i> was discussed when using <i>ImageHash</i>.
 
 <b>Hamming distance results</b>
@@ -293,24 +293,14 @@ The Python modules <i>Numpy</i> and <i>Math</i> can also be used to determine th
 | jennifer_aniston.jpeg   | nicole_kidman_earrings.jpeg         | 55.75
 
 
-
-
-<p align="justify">
 In testing both methods were ables to successfully identify the target image of Jennifer Aniston from the control set of images. As in the previous experiments the SSIM and Hamming measurement generated a computational score based on similarity and distance. Establishing a computational score threshold using these two measurement methods was highly problematic, because it produced a considerable amount of false positives.
 </p>
 
-
-
 ### Conclusions:
 
-TO DO
+Each of the methods used in this repository were able to correctly identify the target image of Jennifer Aniston from the control set of images.  Each method had various strengths and weaknesses in generating computational score based on similarity and distance, especially for those images that were modified (e.g. increase brightness). Depending on the use case each method has its own particular merits, but <i>ImageHash</i> seemed to be the most robust and accurate of all the modules evaluated.
 
 
 ### Notes:
 
 _The code within this repository is **not** production ready. It was **strictly** designed for experimental testing purposes only._
-
-
-
-
-
