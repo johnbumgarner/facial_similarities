@@ -14,7 +14,7 @@ There are numerous use cases for image similarities technologies. These use case
 
 ## Primary objective of this repository
 <p align="justify">
-This repository is going to examine several of the methods used to ascertain if two or more images have similarity or dissimilarity. The set of images used in these image simarility tests are publicly available photographs of well-known female actresses. One dataset has 12 images of these actresses wearing earrings. The different photos of Jennifer Aniston are within the first dataset.  The second dataset consists of 50 images of actresses with no duplicates.  The second set is more diversed, because it included mutiple skin tones and hair colors.   
+This repository is going to examine several of the methods used to ascertain if two or more images have similarity or dissimilarity. The set of images used in these image simarility tests are publicly available photographs of well-known female actresses. The dataset has 12 images of these actresses wearing earrings. Their multiple photos of Jennifer Aniston within this dataset.  
 
 Another objective of this repository is to determine the capabilities and limitations of the Python libraries used to perform these image simarility tests.
 </p>
