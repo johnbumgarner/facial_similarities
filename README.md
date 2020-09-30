@@ -34,18 +34,21 @@ PIL.ImageChops.difference(base_image, comparison_image)
   
 The base_image in this experiment was one of Jennifer Aniston. The comparison_image dataset used in this experiment was the one that contained 12 images of actresses wearing earrings.  The are 3 images of Jennifer Aniston in this dataset, but only one of these images is an absolute match.  
 
-    Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/elizabeth hurley_earrings.jpeg
-    Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/poppy_delevingne_earrings.jpeg
-    Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/hilary_swank_earrings.jpeg
-    Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/nicole_kidman_earrings.jpeg
-    Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/jennifer_aniston_earrings_03.jpeg
-    Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/jennifer_aniston_earrings_02.jpeg
-    Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/jennifer_garner_earrings.jpeg
-    Photos with identical pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/jennifer_aniston_earrings.jpeg<
-    Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/taylor_swift_earrings.jpeg
-    Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/maggie_gyllenhaal_earrings.jpg
-    Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/julia_roberts_earrings.jpeg
-    Photos with dissimilar pixels: jennifer_aniston_earrings.jpeg <--> female_headshots_with_earrings/natalie_portman_earrings.jpeg
+| Base Image Name         | Comparison Image Name               | pixel similarity |
+ | ---------------------   | ---------------------              | ---             
+ | jennifer_aniston.jpeg   | jennifer_aniston_earrings.jpeg     | identical                
+ | jennifer_aniston.jpeg   | natalie_portman_earrings.jpeg      | dissimilar
+ | jennifer_aniston.jpeg   | jennifer_aniston_earrings_03.jpeg  | dissimilar
+ | jennifer_aniston.jpeg   | poppy_delevingne_earrings.jpeg     | dissimilar
+ | jennifer_aniston.jpeg   | taylor_swift_earrings.jpeg         | dissimilar
+ | jennifer_aniston.jpeg   | hilary_swank_earrings.jpeg         | dissimilar
+ | jennifer_aniston.jpeg   | jennifer_aniston_earrings_02.jpeg  | dissimilar
+ | jennifer_aniston.jpeg   | maggie_gyllenhaal_earrings.jpg     | dissimilar
+ | jennifer_aniston.jpeg   | nicole_kidman_earrings.jpeg        | dissimilar
+ | jennifer_aniston.jpeg   | julia_roberts_earrings.jpeg        | dissimilar
+ | jennifer_aniston.jpeg   | jennifer_garner_earrings.jpeg      | dissimilar
+ | jennifer_aniston.jpeg   | elizabeth hurley_earrings.jpeg     | dissimilar
+
 
 This pixel-by-pixel comparison is useful in finding exact duplicates, but it will not match images that have been slightly altered thus resulting in a different pixel value.
 </p>
