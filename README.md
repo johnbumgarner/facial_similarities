@@ -99,7 +99,7 @@ The average hash algorithm correctly matched the Jennifer Aniston base image to 
 The <i>average hash</i> algorithm was able to correctly classify 3 of the 6 variations of the Jennifer Aniston comparison image within the modified dataset to the base image of Jennifer Aniston.  All the <i>Hamming distance</i> values for these modified images were in a range between 2 and 5, which are within the threshold range for potentially similar images. The <i>average hash</i> algorithm was not able to identify a mirror image of the base image within the modified dataset.
 
 <p align="center">
-  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/ahash_histogram_variations.png", width="500" height="500"/>
+  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/ahash_histogram_variations.png", width="600" height="600"/>
 </p>
 
 #### pHash algorithm
@@ -141,7 +141,7 @@ The <i>perceptive hash</i> algorithm correctly matched the Jennifer Aniston base
 The <i>discrete cosine transform</i> approached was able to correctly classify the 5 of the 6 variations of the Jennifer Aniston comparison image  within the modified dataset to the base image of Jennifer Aniston.  All the <i>Hamming distance</i> values for these modified images were in a range between 2 and 8, which are within the threshold range for potentially similar images. The <i>perceptive hash</i> algorithm was not able to identify a mirror image of the base image within the modified dataset.
 
 <p align="center">
-  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/phash_histogram_variations.png", width="500" height="500"/>
+  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/phash_histogram_variations.png", width="600" height="600"/>
 </p>
 
 
@@ -184,7 +184,7 @@ The <i>difference hash</i> algorithm correctly matched the Jennifer Aniston base
 The <i>difference hash</i> algorithm was able to correctly classify 4 of the 6 variations of the Jennifer Aniston comparison image within the modified dataset to the base image of Jennifer Aniston. The image with the red border had a similarity score of O, which is considered an identical match.  The other 3 images similarity scores in a range between 1 and 5, which are within the threshold range for potentially similar images. The <i>difference hash</i> algorithm was not able to identify a mirror image of the base image within the modified dataset.
 
 <p align="center">
-  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/dhash_histogram_variations.png", width="500" height="500"/>
+  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/dhash_histogram_variations.png", width="600" height="600"/>
 </p>
 
 #### wavelet algorithm
@@ -238,7 +238,7 @@ The <i>wavelet hash</i> algorithm correctly matched the Jennifer Aniston base im
 The <i>discrete wavelet transform</i> approached was able to correctly classify the 6 variations of the Jennifer Aniston comparison image within the modified dataset to the base image of Jennifer Aniston.  All the computational values for these modified images were in a range between 2 and 12, which were all within the threshold range for potentially similar images.  The <i>wavelet hash</i> algorithm was also able to identify a mirror image of the base image, but the computational score was 16, which was slightly outside the threshold of 15 or less.
 
 <p align="center">
-  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/whash_histogram_variations.png", width="500" height="500"/>
+  <img src="https://github.com/johnbumgarner/facial_similarities/blob/master/graphic/whash_histogram_variations.png", width="600" height="600"/>
 </p>
 
 </p>
