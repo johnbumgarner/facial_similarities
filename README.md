@@ -296,7 +296,7 @@ The Python modules <i>Numpy</i> and <i>Math</i> can also be used to determine th
 | jennifer_aniston.jpeg   | nicole_kidman_earrings.jpeg         | 55.75
 
 
-In testing both methods were ables to successfully identify the target image of Jennifer Aniston from the control set of images. As in the previous experiments the SSIM and Hamming measurement generated a computational score based on similarity and distance. Establishing a computational score threshold using these two measurement methods was highly problematic, because it produced a considerable amount of false positives.
+Both methods were ables to successfully identify the target image of Jennifer Aniston from the control set of images. As in the previous experiments the SSIM and Hamming measurement generated a computational score based on similarity and distance. Establishing a computational score threshold using these two measurement methods was highly problematic, because it produced a considerable amount of false positives.
 </p>
 
 ### Conclusions:
