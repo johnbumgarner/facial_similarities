@@ -234,3 +234,4 @@ for image in images:
 # the index numbers are removed from this output
 final_df = df_difference_hash.sort_values(by=['similarity score'], ascending=True)
 print(final_df.to_string(index=False))
+
