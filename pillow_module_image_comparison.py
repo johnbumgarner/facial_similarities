@@ -52,9 +52,9 @@ def get_image_files(directory_of_images):
     :return: list of images to be processed.
     """
     images_to_process = []
+    accepted_extensions = ('.bmp', '.jpg', '.jpeg', '.png', '.tiff')
     for (dirpath, dirnames, filenames) in walk(directory_of_images):
         for filename in filenames:
-            accepted_extensions = ('.bmp', '.jpg', '.jpeg', '.png', '.tiff')
             if filename.endswith(accepted_extensions):
                 images_to_process.append(os.path.join(dirpath, filename))
         return images_to_process
@@ -97,3 +97,5 @@ for image in images:
         print(f'Photos with identical pixels: {target_image_name} <--> {image}')
     elif results is False:
         print(f'Photos with dissimilar pixels: {target_image_name} <--> {image}')
+
+        
