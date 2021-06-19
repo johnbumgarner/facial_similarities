@@ -69,9 +69,9 @@ def get_image_files(directory_of_images):
     :return: list of images to be processed.
     """
     images_to_process = []
+    accepted_extensions = ('.bmp', '.gif', '.jpg', '.jpeg', '.png', '.svg', '.tiff')
     for (dirpath, dirnames, filenames) in walk(directory_of_images):
         for filename in filenames:
-            accepted_extensions = ('.bmp', '.gif', '.jpg', '.jpeg', '.png', '.svg', '.tiff')
             if filename.endswith(accepted_extensions):
                 images_to_process.append(os.path.join(dirpath, filename))
         return images_to_process
@@ -250,3 +250,4 @@ for image in images:
 # the index numbers are removed from this output
 final_df = df_ssim_results.sort_values(by=['similarity score'], ascending=False)
 print(final_df.to_string(index=False))
+
